@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    alert (' new test');
+// Run login functionality
 
 });
