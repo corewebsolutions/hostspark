@@ -1,5 +1,5 @@
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
 
@@ -26,4 +26,4 @@ window.onload = function () {
         alert("Something went wrong during login.");
       }
   	});
-};
+});
