@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             contentType: 'application/json',
             data: JSON.stringify({ email, password }),
             success: function (response) {
-                console.log('Signup successful:', response);
-                alert('Account created successfully!');
-                // Optionally store token or redirect here
+
             },
             error: function (xhr) {
                 console.error('Signup failed:', xhr.responseText);
