@@ -1,6 +1,7 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
+
   const $form = $('#signup-form');
   const $errorBox = $('#login-error');
 
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $errorBox.stop(true, true).hide();
 
     if (!email || !password) {
-      showError('Email and password are required.');
+      showFormError('Email and password are required.');
       setLoadingState(false);
       return;
     }
@@ -34,20 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       error: function (xhr) {
         const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
-        showError(err);
+        showFormError(err);
         setLoadingState(false);
       }
     });
 
-    function showError(message) {
-      $errorBox
-        .stop(true, true)
-        .hide()
-        .text(message)
-        .slideDown(300)
-        .delay(1500)
-        .slideUp(300);
-    }
   });
 });
 
