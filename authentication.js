@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .hide()
         .text(message)
         .slideDown(300)
-        .delay(4000)
+        .delay(1500)
         .slideUp(300);
     }
   });
