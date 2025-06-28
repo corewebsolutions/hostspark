@@ -3,7 +3,7 @@ let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 document.addEventListener("DOMContentLoaded", function () {
     const $form = $('#signup-form');
     const $submitBtn = $form.find('button[type="submit"]');
-    const originalBtnText = $submitBtn.text();
+    const originalBtnText = $submitBtn.find('.btn-text').text();    
     const $errorBox = $('#login-error');
 
     $form.on('submit', function (e) {
@@ -49,14 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showLoading(isLoading) {
-        if (isLoading) {
+    const $text = $submitBtn.find('.btn-text');
+    const $spinner = $submitBtn.find('.btn-spinner');
+
+    if (isLoading) {
         $submitBtn.prop('disabled', true);
-        $submitBtn.text('Creating Your Account...');
+        $text.text('Creating Your Account...');
+        $spinner.show();
         $submitBtn.addClass('loading');
-        } else {
+    } else {
         $submitBtn.prop('disabled', false);
-        $submitBtn.text(originalBtnText);
+        $text.text(originalBtnText);
+        $spinner.hide();
         $submitBtn.removeClass('loading');
-        }
+    }
     }
 });
