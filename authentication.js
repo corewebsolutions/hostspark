@@ -1,47 +1,45 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const $form = $('#signup-form');
-  const $submitBtn = $form.find('input[type="submit"]');
-  const originalBtnText = $submitBtn.val();
-  const $errorBox = $('#login-error');
+    const $form = $('#signup-form');
+    const $submitBtn = $form.find('button[type="submit"]');
+    const originalBtnText = $submitBtn.text();
+    const $errorBox = $('#login-error');
 
-  $form.on('submit', function (e) {
-    e.preventDefault();
+    $form.on('submit', function (e) {
+        e.preventDefault();
 
-    const email = $('#signup-email').val().trim();
-    const password = $('#signup-password').val().trim();
+        const email = $('#signup-email').val().trim();
+        const password = $('#signup-password').val().trim();
 
-    $errorBox.stop(true, true).hide();
+        $errorBox.stop(true, true).hide();
 
-    if (!email || !password) {
-      showError('Email and password are required.');
-      return;
-    }
+        if (!email || !password) {
+        showError('Email and password are required.');
+        return;
+        }
 
-    // Show loading state
-    showLoading(true);
+        showLoading(true);
 
-    $.ajax({
-      url: baseURL + 'api:xAumndFJ/auth/signup',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({ email, password }),
-      success: function (response) {
-        alert("Account created successfully!");
-        // Reset button
-        showLoading(false);
-        // Optionally redirect here
-      },
-      error: function (xhr) {
-        const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
-        showError(err);
-        showLoading(false);
-      }
+        $.ajax({
+        url: baseURL + 'api:xAumndFJ/auth/signup',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password }),
+        success: function (response) {
+            alert("Account created successfully!");
+            showLoading(false);
+        },
+        error: function (xhr) {
+            const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
+            showError(err);
+            showLoading(false);
+        }
+        });
     });
 
     function showError(message) {
-      $errorBox
+        $errorBox
         .stop(true, true)
         .hide()
         .text(message)
@@ -51,15 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showLoading(isLoading) {
-      if (isLoading) {
+        if (isLoading) {
         $submitBtn.prop('disabled', true);
-        $submitBtn.val('Creating Your Account...');
+        $submitBtn.text('Creating Your Account...');
         $submitBtn.addClass('loading');
-      } else {
+        } else {
         $submitBtn.prop('disabled', false);
-        $submitBtn.val(originalBtnText);
+        $submitBtn.text(originalBtnText);
         $submitBtn.removeClass('loading');
-      }
+        }
     }
-  });
 });
