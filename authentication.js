@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .hide()                      // Ensure it starts hidden
             .text(message)
             .slideDown(300)             // Slide into view
-            .delay(4000)                // Wait 4 seconds
+            .delay(2500)                // Wait 2.5 seconds
             .slideUp(300);              // Slide back up
         }
     });
