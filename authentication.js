@@ -1,45 +1,46 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const $form = $('#signup-form');
-    const $submitBtn = $form.find('button[type="submit"]');
-    const originalBtnText = $submitBtn.find('.btn-text').text();    
-    const $errorBox = $('#login-error');
+  const $form = $('#signup-form');
+  const $errorBox = $('#login-error');
 
-    $form.on('submit', function (e) {
-        e.preventDefault();
+  $form.on('submit', function (e) {
+    e.preventDefault();
 
-        const email = $('#signup-email').val().trim();
-        const password = $('#signup-password').val().trim();
+    // Flag this form as active
+    $form.addClass('submitting');
 
-        $errorBox.stop(true, true).hide();
+    const email = $('#signup-email').val().trim();
+    const password = $('#signup-password').val().trim();
 
-        if (!email || !password) {
-        showError('Email and password are required.');
-        return;
-        }
+    $errorBox.stop(true, true).hide();
 
-        showLoading(true);
+    if (!email || !password) {
+      showError('Email and password are required.');
+      setLoadingState(false);
+      return;
+    }
 
-        $.ajax({
-        url: baseURL + 'api:xAumndFJ/auth/signup',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ email, password }),
-        success: function (response) {
-            alert("Account created successfully!");
-            showLoading(false);
-        },
-        error: function (xhr) {
-            const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
-            showError(err);
-            showLoading(false);
-        }
-        });
+    setLoadingState(true);
+
+    $.ajax({
+      url: baseURL + 'api:xAumndFJ/auth/signup',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ email, password }),
+      success: function (response) {
+        alert("Account created successfully!");
+        setLoadingState(false);
+      },
+      error: function (xhr) {
+        const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
+        showError(err);
+        setLoadingState(false);
+      }
     });
 
     function showError(message) {
-        $errorBox
+      $errorBox
         .stop(true, true)
         .hide()
         .text(message)
@@ -47,21 +48,35 @@ document.addEventListener("DOMContentLoaded", function () {
         .delay(4000)
         .slideUp(300);
     }
-
-    function showLoading(isLoading) {
-    const $text = $submitBtn.find('.btn-text');
-    const $spinner = $submitBtn.find('.btn-spinner');
-
-    if (isLoading) {
-        $submitBtn.prop('disabled', true);
-        $text.text('Creating Your Account...');
-        $spinner.show();
-        $submitBtn.addClass('loading');
-    } else {
-        $submitBtn.prop('disabled', false);
-        $text.text(originalBtnText);
-        $spinner.hide();
-        $submitBtn.removeClass('loading');
-    }
-    }
+  });
 });
+
+
+function setLoadingState(isLoading) {
+  // Automatically find the currently submitting form
+  const $activeForm = $('form.submitting');
+
+  if (!$activeForm.length) return;
+
+  const $button = $activeForm.find('.loading-button');
+  const $text = $button.find('.btn-text');
+  const $spinner = $button.find('.btn-spinner');
+  const originalText = $button.data('original-text') || $text.text();
+  const loadingText = $button.data('loading-text') || 'Loading...';
+
+  if (isLoading) {
+    $button.prop('disabled', true).addClass('loading');
+
+    if (!$button.data('original-text')) {
+      $button.data('original-text', originalText);
+    }
+
+    $text.text(loadingText);
+    $spinner.show();
+  } else {
+    $button.prop('disabled', false).removeClass('loading');
+    $text.text(originalText);
+    $spinner.hide();
+    $activeForm.removeClass('submitting');
+  }
+}
