@@ -27,6 +27,7 @@ function setLoadingState(isLoading) {
   }
 }
 
+// Form Dropdown Error Message
 function showFormError(message) {
   const $form = $('form.submitting');
   if (!$form.length) return;
