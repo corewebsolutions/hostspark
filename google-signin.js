@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     $.ajax({
-    url: "https://xukl-cktx-zcsb.n7e.xano.io/api:xAumndFJ/google-login",
+    url: "https://xukl-cktx-zcsb.n7e.xano.io/api:xAumndFJ/google_auth",
     type: "POST",
     data: {
       code: code
