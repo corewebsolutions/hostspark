@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // check for redirected users after sign up for additional questions
   if (localStorage.getItem("authToken")) { 
     if (localStorage.getItem("authMode") === "google") {
-    $('#sign-up-google').click();
+    $('#signup-button-manual').click();
     alert("google sign in ");
     } else if (localStorage.getItem("authMode") === "manual") {
     $('#sign-up-manual').click();
