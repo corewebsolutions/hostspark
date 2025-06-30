@@ -2,7 +2,8 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 // Button Loader Animation
-function setLoadingState(isLoading) {
+
+window.setLoadingState = function(isLoading) {
   const $form = $('form.submitting');
   if (!$form.length) return;
 
@@ -30,7 +31,7 @@ function setLoadingState(isLoading) {
 }
 
 // Form Dropdown Error Message
-function showFormError(message) {
+window.showFormError = function(message) {
   const $form = $('form.submitting');
   
   if (!$form.length) return;
