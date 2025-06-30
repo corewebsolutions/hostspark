@@ -3,12 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // check for redirected users after sign up for additional questions
   if (localStorage.getItem("authToken")) { 
+    $('#sign-up-block').hide(); // hide signup form
+
     if (localStorage.getItem("authMode") === "google") {
-    $('#signup-button-manual').click();
-    alert("google sign in ");
+    $('#signup-google-user-block').show(); 
+    $('#signup-manual-user-block').hide(); 
     } else if (localStorage.getItem("authMode") === "manual") {
-    $('#sign-up-manual').click();
-    alert("manual sign in ");
+    $('#signup-manual-user-block').show(); 
+    $('#signup-google-user-block').hide(); 
     }
   }
 
