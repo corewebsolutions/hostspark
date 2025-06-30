@@ -1,4 +1,4 @@
-
+// Store base URL Xano
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 // Button Loader Animation
