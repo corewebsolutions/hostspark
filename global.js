@@ -63,4 +63,3 @@ window.createPayload = function($form) {
 
   return payload;
 }
- 
