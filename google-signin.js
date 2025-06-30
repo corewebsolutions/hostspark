@@ -19,13 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.authToken) { // if user is authenticated
           localStorage.setItem("authToken", response.authToken);
+          localStorage.setItem("authMode", "google");
           window.location.href = "/sign-up"; // Redirect after login
-          if (response.auth_type === "google" && response.new_user == true) {
-
-            $('#sign-up-google').click(); // show additional sign up questions
-          } else {
-            window.location.href = "/welcome"; // Redirect after login
-          }
+          
         } else {
           alert("Login failed. Please try again.");
         }

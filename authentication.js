@@ -1,6 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
+  // check for redirected users after sign up for additional questions
+  if (localStorage.getItem("authToken")) { 
+    if (localStorage.getItem("authMode")=== "google"){
+        $('#sign-up-google').click();
+    } else if (localStorage.getItem("authMode")=== "google") {
+        $('#sign-up-manual').click();
+    }
+  }
+
   const $form = $('#signup-form');
   const $errorBox = $('#login-error');
 
@@ -31,13 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
       success: function (response) {
 
         localStorage.setItem("authToken", response.authToken);
+        localStorage.setItem("authMode", "manual");
         window.location.href = "/sign-up"; // Redirect after login
-        if (response.auth_type === "manual" && response.new_user == true) {
 
-        $('#sign-up-manual').click(); // show additional sign up questions
-        } else {
-        window.location.href = "/welcome"; // Redirect after login
-        }
         setLoadingState(false);
 
       },
