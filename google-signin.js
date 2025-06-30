@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.authToken) { // if user is authenticated
           localStorage.setItem("authToken", response.authToken);
           localStorage.setItem("authMode", "google");
-          window.location.href = "/sign-up"; // Redirect after login
+          if (response.new_user == false) {
+              window.location.href = "/welcome"; 
+          } else {
+              window.location.href = "/sign-up"; 
+          }
           
         } else {
           alert("Login failed. Please try again.");
