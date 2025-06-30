@@ -1,5 +1,3 @@
-// Store base URL Xano
-let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
