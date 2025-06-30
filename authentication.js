@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // check for redirected users after sign up for additional questions
   if (localStorage.getItem("authToken")) { 
-    if (localStorage.getItem("authMode")=== "google"){
-        $('#sign-up-google').click();
-    } else if (localStorage.getItem("authMode")=== "google") {
-        $('#sign-up-manual').click();
+    if (localStorage.getItem("authMode") === "google") {
+    $('#sign-up-google').click();
+    } else if (localStorage.getItem("authMode") === "manual") {
+    $('#sign-up-manual').click();
     }
   }
 
