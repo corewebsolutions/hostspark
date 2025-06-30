@@ -1,4 +1,3 @@
-let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -30,8 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
       contentType: 'application/json',
       data: JSON.stringify({ email, password }),
       success: function (response) {
-        alert("Account created successfully!");
+
+        localStorage.setItem("authToken", response.authToken);
+        window.location.href = "/sign-up"; // Redirect after login
+        if (response.auth_type === "manual" && response.new_user == true) {
+
+        $('#sign-up-manual').click(); // show additional sign up questions
+        } else {
+        window.location.href = "/welcome"; // Redirect after login
+        }
         setLoadingState(false);
+
       },
       error: function (xhr) {
         const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';

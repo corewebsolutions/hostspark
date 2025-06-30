@@ -8,22 +8,32 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     $.ajax({
-    url: "https://xukl-cktx-zcsb.n7e.xano.io/api:xAumndFJ/google_auth",
+    url:  baseURL + "api:xAumndFJ/google_auth",
     type: "POST",
     data: {
       code: code
     },
     success: function (response) {
-        if (response.authToken) {
+
+        if (response.authToken) { // if user is authenticated
           localStorage.setItem("authToken", response.authToken);
-          window.location.href = "/welcome"; // Redirect after login
+          window.location.href = "/sign-up"; // Redirect after login
+          if (response.auth_type === "google" && response.new_user == true) {
+
+            $('#sign-up-google').click(); // show additional sign up questions
+          } else {
+            window.location.href = "/welcome"; // Redirect after login
+          }
         } else {
           alert("Login failed. Please try again.");
         }
+
     },
       error: function (xhr, status, error) {
+
         console.error("OAuth Error:", error);
-        alert("Something went wrong during login.");
+        alert("Something went wrong during login.")
+        
       }
   	});
 });
