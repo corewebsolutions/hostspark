@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Flag this form as active
-        $form.addClass('submitting');
-        setLoadingState(true);
+        setLoadingState(true, this);
 
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
@@ -74,8 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const $onboardForm = $(this); // dynamic reference to the submitted form
-        $onboardForm .addClass('submitting');
-        setLoadingState(true);
+        setLoadingState(true, this);
 
         const payload = createPayload($onboardForm);
 

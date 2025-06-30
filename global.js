@@ -2,8 +2,17 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 // Button Loader Animation
-window.setLoadingState = function(isLoading) {
-  const $form = $('form.submitting');
+window.setLoadingState = function(isLoading, formEl) {
+  let $form;
+
+  // If a form element is passed in, use it. Otherwise fall back to $('form.submitting')
+  if (formEl) {
+    $form = $(formEl);
+    $form.addClass('submitting'); 
+  } else {
+    $form = $('form.submitting');
+  }
+
   if (!$form.length) return;
 
   const $button = $form.find('.loading-button');
@@ -25,9 +34,9 @@ window.setLoadingState = function(isLoading) {
     $button.prop('disabled', false).removeClass('loading');
     $text.text(originalText);
     $spinner.hide();
-    $form.removeClass('submitting'); 
+    $form.removeClass('submitting');
   }
-}
+};
 
 // Form Dropdown Error Message
 window.showFormError = function(message) {
@@ -63,3 +72,4 @@ window.createPayload = function($form) {
 
   return payload;
 }
+ 
