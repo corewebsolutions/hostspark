@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $form.on('submit', function (e) {
 
         e.preventDefault();
+        setLoadingState(true);
 
         // Flag this form as active
         $form.addClass('submitting');
@@ -30,15 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
 
-        $errorBox.stop(true, true).hide();
-
         if (!email || !password) {
         showFormError('Email and password are required.');
         setLoadingState(false);
         return;
         }
-
-        setLoadingState(true);
 
         $.ajax({
         url: baseURL + 'api:xAumndFJ/auth/signup',
@@ -68,16 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
     $onboardingGoogle.add($onboardingManual).on('submit', function (e) {
 
         e.preventDefault();
+        setLoadingState(true);
 
         const $onboardForm = $(this); // dynamic reference to the submitted form
         $onboardForm .addClass('submitting');
 
         const payload = createPayload($form);
-        setLoadingState(true);
-
-        $errorBox.stop(true, true).hide();
-
-        setLoadingState(true);
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/onboarding_questions',
