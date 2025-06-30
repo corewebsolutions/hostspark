@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const $onboardForm = $(this); // dynamic reference to the submitted form
         $onboardForm .addClass('submitting');
 
-        const payload = createPayload($form);
+        const payload = createPayload($onboardForm);
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/onboarding_questions',
