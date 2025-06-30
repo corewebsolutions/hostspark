@@ -2,7 +2,6 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 // Button Loader Animation
-
 window.setLoadingState = function(isLoading) {
   const $form = $('form.submitting');
   if (!$form.length) return;
@@ -64,3 +63,4 @@ window.createPayload = function($form) {
 
   return payload;
 }
+ 
