@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem("authToken")) { 
     if (localStorage.getItem("authMode") === "google") {
     $('#sign-up-google').click();
+    alert("google sign in ");
     } else if (localStorage.getItem("authMode") === "manual") {
     $('#sign-up-manual').click();
+    alert("manual sign in ");
     }
   }
 
