@@ -1,3 +1,5 @@
+// Store base URL Xano
+let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.error("OAuth Error:", error);
         alert("Something went wrong during login.")
-        
+
       }
   	});
 });
