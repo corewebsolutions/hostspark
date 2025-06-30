@@ -48,3 +48,18 @@ function showFormError(message) {
     .delay(1500)
     .slideUp(300);
 }
+
+// Payload Builder from form fields
+window.createPayload = function($form) {
+  const payload = {};
+
+  $form.find('[data-api-input]').each(function () {
+    const key = $(this).attr('data-api-input');
+    const value = $(this).val();
+    if (key) {
+      payload[key] = value;
+    }
+  });
+
+  return payload;
+}
