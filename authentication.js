@@ -23,17 +23,18 @@ document.addEventListener("DOMContentLoaded", function () {
     $form.on('submit', function (e) {
 
         e.preventDefault();
-        setLoadingState(true);
+
 
         // Flag this form as active
         $form.addClass('submitting');
+        setLoadingState(true);
 
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
 
         if (!email || !password) {
         showFormError('Email and password are required.');
-        setLoadingState(false);
+        setLoadingState(true);
         return;
         }
 
@@ -70,10 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
     $onboardingGoogle.add($onboardingManual).on('submit', function (e) {
 
         e.preventDefault();
-        setLoadingState(true);
+
 
         const $onboardForm = $(this); // dynamic reference to the submitted form
         $onboardForm .addClass('submitting');
+        setLoadingState(true);
 
         const payload = createPayload($onboardForm);
 
