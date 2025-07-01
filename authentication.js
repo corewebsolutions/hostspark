@@ -2,10 +2,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // detect signup and onboarding forms...
-    const $form = $('#signup-form');
-    const $onboardingGoogle = $('#signup-google-data-form');
-    const $onboardingManual = $('#signup-manual-data-form');
-    const $forgotPassForm = $('#forgot-password-form');
+    const $form = $('#signup-form'); // signup form 
+    const $onboardingGoogle = $('#signup-google-data-form'); // onboarding form - google users
+    const $onboardingManual = $('#signup-manual-data-form'); // onboarding form - manual users
+    const $forgotPassForm = $('#forgot-password-form'); // forgot password form
 
     // check for redirected users after sign up for additional questions...
     if (localStorage.getItem("authToken")) { 
@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
     });
 
+
     // Forgot Password form submitted...
     $forgotPassForm.on('submit', function (e) {
 
@@ -109,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Flag this form as active
         setLoadingState(true, this);
-        
+
         const email = $('[data-api-input="email"]').val().trim();
 
         $.ajax({
@@ -120,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (response) {
 
                 setLoadingState(false);
-                alert('Email Sent')
+                alert('Email Sent' + response)
 
             },
             error: function (xhr) {
