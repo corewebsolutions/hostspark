@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!email || !password) {
         showFormError('Email and password are required.');
-
+        setLoadingState(false);
         return;
         }
-        
+
         $.ajax({
         url: baseURL + 'api:xAumndFJ/auth/signup',
         type: 'POST',
