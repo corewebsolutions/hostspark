@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const $form = $('#signup-form');
     const $onboardingGoogle = $('#signup-google-data-form');
     const $onboardingManual = $('#signup-manual-data-form');
+    const $forgotPassForm = $('#forgot-password-form');
 
     // check for redirected users after sign up for additional questions...
     if (localStorage.getItem("authToken")) { 
@@ -99,5 +100,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
         
     });
+
+    // Forgot Password form submitted...
+    $forgotPassForm.on('submit', function (e) {
+
+        e.preventDefault();
+
+
+        // Flag this form as active
+        setLoadingState(true, this);
+
+        const email = $('#signup-email').val().trim();
+
+        $.ajax({
+            url: baseURL + 'api:xAumndFJ/forgot_password',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ email }),
+            success: function (response) {
+
+                setLoadingState(false);
+                alert('Email Sent')
+
+            },
+            error: function (xhr) {
+                const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
+                showFormError(err);
+                setLoadingState(false);
+            }
+        });
+
+    });
+
 });
 
