@@ -54,7 +54,7 @@ window.showFormError = function(message) {
 
   $errorBox
     .slideDown(300)
-    .delay(1500)
+    .delay(2000)
     .slideUp(300);
 }
 
