@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.new_user == false) {
               window.location.href = "/welcome"; 
           } else {
-              window.location.href = "/sign-up"; 
+              window.location.href = "/auth/sign-up"; 
           }
           
         } else {
