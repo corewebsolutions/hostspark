@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Flag this form as active
         setLoadingState(true, this);
-
-        const email = $('#signup-email').val().trim();
+        
+        const email = $('[data-api-input="email"]').val().trim();
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/forgot_password',
