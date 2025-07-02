@@ -46,14 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
-            localStorage.setItem("authToken", response.authToken);
             localStorage.setItem("authMode", "manual");
-
-            if (response.new_user == false) {
-                window.location.href = "/welcome"; 
-            } else {
-                window.location.href = "/auth/sign-up"; 
-            }
+            localStorage.setItem("authToken", response.authToken);
+            localStorage.setItem("firstName", response.user.first_name);
+            localStorage.setItem("lastName", response.user.last_name);
 
             setLoadingState(false);
 
@@ -86,20 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         $.ajax({
-        url: baseURL + 'api:xAumndFJ/auth/signup',
+        url: baseURL + 'api:xAumndFJ/auth/login',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
             localStorage.setItem("authToken", response.authToken);
-            localStorage.setItem("authMode", "manual");
-
-            if (response.new_user == false) {
-                window.location.href = "/welcome"; 
-            } else {
-                window.location.href = "/auth/sign-up"; 
-            }
+            localStorage.setItem("firstName", response.user.first_name);
+            localStorage.setItem("lastName", response.user.last_name);
 
             setLoadingState(false);
 

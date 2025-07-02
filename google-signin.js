@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.authToken) { // if user is authenticated
           localStorage.setItem("authToken", response.authToken);
           localStorage.setItem("authMode", "google");
+          localStorage.setItem("firstName", response.user.first_name);
+          localStorage.setItem("lastName", response.user.last_name);
+
           if (response.new_user == false) {
               window.location.href = "/welcome"; 
           } else {
