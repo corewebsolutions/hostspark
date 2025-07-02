@@ -14,12 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
             Authorization: "Bearer " + localStorage.authToken,
             },
             success: function (response) {
-            if (response.url) {
-                window.location.href = response.url; // redirect to Stripe onboarding
-            } else {
-                alert("Unable to connect to Stripe. Please try again.");
-                $btn.prop('disabled', false).text('Connect Stripe');
-            }
+
+                alert('success!')
+                /*if (response.url) {
+                    window.location.href = response.url; // redirect to Stripe onboarding
+                } else {
+                    alert("Unable to connect to Stripe. Please try again.");
+                    $btn.prop('disabled', false).text('Connect Stripe');
+                }*/
             },
             error: function (xhr) {
                 const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
