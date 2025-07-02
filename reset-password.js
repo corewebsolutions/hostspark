@@ -38,9 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
       contentType: 'application/json',
       data: JSON.stringify({ password, reset_id }),
       success: function (response) {
-        setLoadingState(false);
+
         alert('Password reset successful!');
+        setLoadingState(false);
+
+        localStorage.setItem("authToken", response.authToken);
+        localStorage.setItem("firstName", response.user.first_name);
+        localStorage.setItem("lastName", response.user.last_name);
+        localStorage.setItem("email", response.user.email);
+
         window.location.href = "/welcome";
+
       },
       error: function (xhr) {
         const err = xhr.responseJSON?.message || 'Reset failed. Please try again.';
