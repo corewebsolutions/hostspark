@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
+            // hide signup form
+            $('#sign-up-block').hide();
+
             // set local storage
             localStorage.setItem("authMode", "manual");
             localStorage.setItem("authToken", response.authToken);
