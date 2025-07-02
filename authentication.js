@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setLoadingState(false);
             
-            window.location.href = "/welcome";
+            window.location.href = "/app/home";
 
         },
         error: function (xhr) {
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.avatar);
                 }
 
-                window.location.href = "/welcome";
+                window.location.href = "/app/home";
 
                 setLoadingState(false);
 
