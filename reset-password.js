@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("lastName", response.user.last_name);
         localStorage.setItem("email", response.user.email);
 
-        window.location.href = "/welcome";
+        window.location.href = "/app/home";
 
       },
       error: function (xhr) {
