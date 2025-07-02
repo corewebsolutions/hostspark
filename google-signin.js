@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("email", response.user.email);
 
           if (response.new_user == false) {
-              window.location.href = "/welcome"; 
+              window.location.href = "/app/home"; 
           } else {
               window.location.href = "/auth/sign-up"; 
           }
