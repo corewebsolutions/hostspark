@@ -37,6 +37,7 @@ function initApp() {
 
   urlRouting();
   loadCurrentPage();
+  dropDownNavigation();
   logOutUser();
   ajaxErrorHandler();
 
@@ -271,5 +272,25 @@ function ajaxErrorHandler() {
 
 
     });
+
+}
+
+// Dropdown Navigation
+function dropDownNavigation(){
+
+  // my account
+  $('#top-nav-my-account').on('click', function () {
+    $('#my-account').click();
+  });
+
+  // support
+  $('#top-nav-support').on('click', function () {
+    $('#support').click();
+  });
+
+  // feedback
+  $('#top-nav-feedback').on('click', function () {
+    $('#feedback').click();
+  });
 
 }
