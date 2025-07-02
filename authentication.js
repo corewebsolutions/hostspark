@@ -48,8 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             localStorage.setItem("authMode", "manual");
             localStorage.setItem("authToken", response.authToken);
-            localStorage.setItem("firstName", response.user.first_name);
-            localStorage.setItem("lastName", response.user.last_name);
 
             setLoadingState(false);
 
@@ -125,14 +123,18 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             data: JSON.stringify(payload),
             success: function (response) {
-            // Handle response if needed
-            window.location.href = "/welcome";
-            setLoadingState(false);
+
+                localStorage.setItem("firstName", response.user.first_name);
+                localStorage.setItem("lastName", response.user.last_name);
+                window.location.href = "/welcome";
+                setLoadingState(false);
+
             },
             error: function (xhr) {
-            const err = xhr.responseJSON?.message || 'Submission failed. Please try again.';
-            showFormError(err);
-            setLoadingState(false);
+                
+                const err = xhr.responseJSON?.message || 'Submission failed. Please try again.';
+                showFormError(err);
+                setLoadingState(false);
             }
         });
 
