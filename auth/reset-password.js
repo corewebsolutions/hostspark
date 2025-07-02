@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("avatar", response.avatar);
         }
 
-        window.location.href = "/app/home";
+        window.location.href = "/app/dashboard";
 
       },
       error: function (xhr) {
