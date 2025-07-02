@@ -312,7 +312,7 @@ function loadUserAvatar() {
   const $avatarImg = $('[data=avatar]');
   const $avatarFallback = $('[data=avatar-fallback]');
 
-  if (avatar) {
+  if (avatar != null) {
     $avatarImg.attr('src', avatar).css('display', 'block');
     $avatarFallback.css('display', 'none');
   } else {
