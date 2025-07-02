@@ -1,5 +1,5 @@
-
 document.addEventListener("DOMContentLoaded", function () {
+
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
 
@@ -40,4 +40,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
   	});
+    
 });
