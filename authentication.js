@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("email", response.user.email);
 
             setLoadingState(false);
+            
+            window.location.href = "/welcome";
 
         },
         error: function (xhr) {
