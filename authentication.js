@@ -46,8 +46,18 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
+            // set local storage
             localStorage.setItem("authMode", "manual");
             localStorage.setItem("authToken", response.authToken);
+
+            // show appropriate onboarding form
+            if (localStorage.getItem("authMode") === "manual") {
+                $('#signup-manual-user-block').show();
+                $('#signup-google-user-block').hide();
+            } else if (localStorage.getItem("authMode") === "google") {
+                $('#signup-manual-user-block').hide();
+                $('#signup-google-user-block').show();
+            }
 
             setLoadingState(false);
 
