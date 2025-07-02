@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("firstName", response.user.first_name);
         localStorage.setItem("lastName", response.user.last_name);
         localStorage.setItem("email", response.user.email);
+        if (response.user.avatar) {
+          localStorage.setItem("avatar", response.avatar);
+        }
 
         window.location.href = "/app/home";
 
