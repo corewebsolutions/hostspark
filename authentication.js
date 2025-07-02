@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 localStorage.setItem("firstName", response.first_name);
                 localStorage.setItem("lastName", response.last_name);
-                localStorage.setItem("lastName", response.email);
+                localStorage.setItem("email", response.email);
                 if (response.avatar) {
                 localStorage.setItem("avatar", response.avatar);
                 }
