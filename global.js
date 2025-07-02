@@ -1,6 +1,47 @@
 // Store base URL Xano
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
+document.addEventListener("DOMContentLoaded", function() {
+
+  if (localStorage.authToken == null) {
+    //run code if they are not logged in
+    alert("You are not logged in");
+    window.location.href = "/auth/login";
+  } else {
+    authUser();
+  }
+
+});
+
+function authUser() {
+
+  $.ajax({
+    url: baseURL + "api:xAumndFJ/auth/me",
+    type: "GET",
+    headers: {
+      'Content-Type': "application/json",
+      'Authorization': "Bearer " + localStorage.authToken
+    },
+    success: function (data) {
+
+      initApp();
+    },
+    error: function (error) {
+      window.location.href = "/auth/login";
+    }
+  });
+
+}
+
+function initApp() {
+
+  urlRouting();
+  loadCurrentPage();
+  logOutUser();
+  ajaxErrorHandler();
+
+}
+
 // Button Loader Animation
 window.setLoadingState = function(isLoading, formEl) {
   let $form;
@@ -72,4 +113,163 @@ window.createPayload = function($form) {
 
   return payload;
 }
+
+// URL Router
+function urlRouting() {
+
+  // Attach click handlers to all nav links
+  const navLinks = document.querySelectorAll('.primary-nav-link');
+
+  navLinks.forEach((link) => {
+    const navLinkId = link.id;
+
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // prevent default anchor behavior
+
+      const targetPath = `/app/${navLinkId}`;
+      history.pushState(navLinkId, null, targetPath);
+
+      localStorage.setItem('pageId', navLinkId);
+      localStorage.removeItem('pageRefreshParam');
+
+      $('.primary-nav-link').removeClass('active-tab');
+      $(`#${navLinkId}`).addClass('active-tab');
+    });
+  });
+
+  // Handle back/forward browser events
+  window.addEventListener('popstate', function (event) {
+    const path = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const state = event.state;
+
+    const routeMatch = (segment) => path.includes(`/app/${segment}`) && id;
+
+    if (routeMatch('event')) {
+      localStorage.setItem('pageId', 'event');
+      localStorage.setItem('pageRefreshParam', id);
+      $('#event').click();
+
+    } else if (routeMatch('ticket')) {
+      localStorage.setItem('pageId', 'ticket');
+      localStorage.setItem('pageRefreshParam', id);
+      $('#ticket').click();
+
+    } else if (routeMatch('attendee')) {
+      localStorage.setItem('pageId', 'attendee');
+      localStorage.setItem('pageRefreshParam', id);
+      $('#attendee').click();
+
+    } else if (state) {
+      localStorage.setItem('pageId', state);
+      localStorage.removeItem('pageRefreshParam');
+      $(`#${state}`).click();
+    }
+  });
+}
  
+// Load Current Page
+function loadCurrentPage() {
+
+  /* This function loads the correct screen if the user refreshes a page */
+  let currentPage = localStorage.getItem("pageId");
+  setTimeout(() => {
+    $("#" + currentPage).click(); // open tab of page id
+    history.pushState(currentPage, null, "/app/" + currentPage); // log history and update url
+
+    // Check if the currentPage is "profile," "property," or "unit"
+    if (["event", "ticket", "attendee"].includes(currentPage)) {
+      // Get the value from local storage
+      let pageRefreshParam = localStorage.getItem("pageRefreshParam");
+
+      // Add the URL parameter to the history
+      history.pushState(
+        currentPage,
+        null,
+        "/app/" + currentPage + "?id=" + pageRefreshParam
+      );
+    }
+  }, 100);
+
+
+}
+
+// Logout Functionality
+function logOutUser() {
+
+  $("#logout-button").on("click", function () {
+
+  localStorage.clear();
+  window.location.href = "/auth/login";
+
+});
+
+}
+
+// Global Network Error Handling
+function ajaxErrorHandler() {
+
+    /* Global Ajax Errors Handling */
+    $(document).ajaxError(function(event, jqXHR, settings, thrownError) {
+
+      // Retrieve the error code and response text
+      var errorCode = jqXHR.status;
+      var errorMessage = jqXHR.responseText;
+
+
+      // Try to parse the responseText to JSON if the API response is JSON
+      try {
+          var responseJson = JSON.parse(jqXHR.responseText);
+          errorMessage = responseJson.message || responseJson.error || errorMessage;
+      } catch (e) {
+          // responseText wasn't JSON, use the raw responseText
+      }
+
+      console.log("Parsed Error Message: " + errorMessage);
+
+      // Check if the error is a 401 Unauthorized or 500 with the specific message
+      if ((errorCode === 401 && (errorMessage.includes("This token is expired.") || errorMessage.includes("Invalid token"))) || 
+          (errorCode === 500 && errorMessage.includes("Unable to locate auth: extras.user_id"))) {
+
+          alert('Session Expired');
+          logOutUser();
+          
+      } else if (errorMessage.includes("Unable to locate auth: extras.user_id")) {
+          alert('Unable to Authenticate User');
+          logOutUser();
+
+      } else {
+
+          alert("An error has occured. Please try again.");
+
+          // Prepare the error data as a single JSON object
+          var errorData = JSON.stringify({
+            endpoint: settings.url,
+            error_code: errorCode,
+            error_message: errorMessage,
+            status: jqXHR.statusText,
+            response: parseJsonSafe(jqXHR.responseText),
+            request: settings.data ? parseJsonSafe(settings.data) : null,
+            user: localStorage.userId
+          });
+
+        // Send the error data to your server
+        $.ajax({
+            type: "POST",
+            url: baseURL + "api:LmBMPU1T/record_error",
+            contentType: "application/json",
+            data: errorData, // Send the stringified JSON object
+            success: function(response) {
+
+            },
+            error: function(response) {
+
+            }
+        });
+      }
+
+
+    });
+
+}
