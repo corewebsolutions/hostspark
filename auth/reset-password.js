@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("avatar", response.user.avatar);
         }
 
+        localStorage.setItem("pageId","dashboard");
         window.location.href = "/app/dashboard";
 
       },

@@ -104,7 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("email", response.user.email);
 
             setLoadingState(false);
-            
+
+            localStorage.setItem("pageId","dashboard");
             window.location.href = "/app/dashboard";
 
         },
@@ -146,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.avatar);
                 }
 
+                localStorage.setItem("pageId","dashboard");
                 window.location.href = "/app/dashboard";
 
                 setLoadingState(false);

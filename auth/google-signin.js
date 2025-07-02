@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("avatar", response.user.avatar);
 
           if (response.new_user == false) {
+              localStorage.setItem("pageId","dashboard");
               window.location.href = "/app/dashboard"; 
           } else {
               window.location.href = "/auth/sign-up"; 
