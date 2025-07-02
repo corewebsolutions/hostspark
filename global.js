@@ -40,6 +40,7 @@ function initApp() {
   dropDownNavigation();
   logOutUser();
   ajaxErrorHandler();
+  loadUserAvatar();
 
 }
 
@@ -293,4 +294,32 @@ function dropDownNavigation(){
     $('#feedback').click();
   });
 
+}
+
+// Load User Avatar
+function loadUserAvatar() {
+
+  const firstName = localStorage.getItem('firstName') || '';
+  const lastName = localStorage.getItem('lastName') || '';
+  const avatar = localStorage.getItem('avatar');
+
+  const fullName = `${firstName} ${lastName}`.trim();
+
+  // 1. Update full name in all elements with data=user_name
+  $('[data=user_name]').text(fullName);
+
+  // 2. Handle avatar display
+  const $avatarImg = $('[data=avatar]');
+  const $avatarFallback = $('[data=avatar-fallback]');
+
+  if (avatar) {
+    $avatarImg.attr('src', avatar).css('display', 'block');
+    $avatarFallback.css('display', 'none');
+  } else {
+    $avatarImg.css('display', 'none');
+    const initials =
+      (firstName.charAt(0) || '') + (lastName.charAt(0) || '');
+    $avatarFallback.text(initials.toUpperCase()).css('display', 'flex');
+  }
+  
 }
