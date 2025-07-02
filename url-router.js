@@ -38,6 +38,6 @@ function pageRedirect() {
   console.log(page); // log
   localStorage.setItem("pageId", page); // store page variable for re-directs
   localStorage.setItem("pageRefreshParam", id);
-  location.href = "/app/home"; // redirect to dashboard
-  
+  location.href = "/app/dashboard"; // redirect to dashboard
+
 }
