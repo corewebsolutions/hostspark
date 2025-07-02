@@ -124,14 +124,20 @@ document.addEventListener("DOMContentLoaded", function () {
             data: JSON.stringify(payload),
             success: function (response) {
 
-                localStorage.setItem("firstName", response.user.first_name);
-                localStorage.setItem("lastName", response.user.last_name);
+                localStorage.setItem("firstName", response.first_name);
+                localStorage.setItem("lastName", response.last_name);
+                localStorage.setItem("lastName", response.email);
+                if (response.avatar) {
+                localStorage.setItem("avatar", response.avatar);
+                }
+
                 window.location.href = "/welcome";
+
                 setLoadingState(false);
 
             },
             error: function (xhr) {
-                
+
                 const err = xhr.responseJSON?.message || 'Submission failed. Please try again.';
                 showFormError(err);
                 setLoadingState(false);
