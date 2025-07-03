@@ -277,22 +277,29 @@ function ajaxErrorHandler() {
 }
 
 // Dropdown Navigation
-function dropDownNavigation(){
+function dropDownNavigation() {
 
-  // my account
-  $('#top-nav-my-account').on('click', function () {
+  $('#top-nav-my-account').on('click', function (e) {
+    e.preventDefault();
+    localStorage.setItem("pageId", "my-account");
+    localStorage.removeItem("pageRefreshParam");
+    history.pushState("my-account", null, "/app/my-account");
     $('#my-account').click();
-    //$('#account-change-plan').click();
-
   });
 
-  // support
-  $('#top-nav-support').on('click', function () {
+  $('#top-nav-support').on('click', function (e) {
+    e.preventDefault();
+    localStorage.setItem("pageId", "support");
+    localStorage.removeItem("pageRefreshParam");
+    history.pushState("support", null, "/app/support");
     $('#support').click();
   });
 
-  // feedback
-  $('#top-nav-feedback').on('click', function () {
+  $('#top-nav-feedback').on('click', function (e) {
+    e.preventDefault();
+    localStorage.setItem("pageId", "feedback");
+    localStorage.removeItem("pageRefreshParam");
+    history.pushState("feedback", null, "/app/feedback");
     $('#feedback').click();
   });
 
