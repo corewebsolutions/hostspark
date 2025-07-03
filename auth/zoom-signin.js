@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     success: function (response) {
       
       showToast('success','Zoom has been successfully connected!');
-      $('#my-account').click();
-      localStorage.setItem('pageId',"my-account");
+      window.location.href = "/app/my-account";
 
     },
+
     error: function (xhr, status, error) {
       console.error("Zoom OAuth Error:", error);
       alert("Something went wrong while connecting your Zoom account.");
