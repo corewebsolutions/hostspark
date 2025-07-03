@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (response) {
 
                 setLoadingState(false);
-                alert('Email Sent' + response)
+                showToast('success','Please check your email for the reset link.')
 
             },
             error: function (xhr) {
