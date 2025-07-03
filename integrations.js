@@ -57,6 +57,7 @@ function getUserIntegrationStatus() {
             if (response.zoom_connection === "not_connected"){
                 $('[data="zoom-connected"]').hide();
                 $('[data-action-req="zoom"]').hide();
+                $('#zoom-integration-button').attr('href', 'https://zoom.us/oauth/authorize?response_type=code&client_id=qvUnchNxSuax82ydEYhA&redirect_uri=https://host-spark.webflow.io/zoom-sign-in');
             }else if (response.zoom_connection === "pending_items") {
                 $('[data="zoom-connected"]').hide();
                 $('[data-action-req="zoom"]').show();
@@ -65,6 +66,10 @@ function getUserIntegrationStatus() {
                 $('[data-action-req="zoom"]').hide();
                 $('.zoom-connect-text').text("Disconnect");
                 $('#zoom-connect-icon').text("");
+                $('#zoom-integration-button').attr('href', '');
+                $("#zoom-integration-button").on('click', function () {
+                    disconnectZoom();
+                });
             }
 
         },
@@ -72,5 +77,24 @@ function getUserIntegrationStatus() {
 
         }
     });
+
+}
+
+function disconnectZoom() {
+
+    $.ajax({
+    url: baseURL + 'api:xAumndFJ/zoom_disconnect', 
+    type: 'POST',
+    headers: {
+    Authorization: "Bearer " + localStorage.authToken,
+    },
+    success: function (response) {
+
+        alert('success!')
+    },
+    error: function (xhr) {
+
+    }
+});
 
 }
