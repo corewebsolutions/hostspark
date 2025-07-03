@@ -83,6 +83,7 @@ function getUserIntegrationStatus() {
                 .off('click') 
                 .on('click', function (e) {
                 e.preventDefault();
+                $('.zoom-connect-text').text("Disconnecting...");
                 disconnectZoom();
                 });
             }
