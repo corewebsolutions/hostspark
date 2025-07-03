@@ -63,6 +63,7 @@ function getUserIntegrationStatus() {
             }else if (response.zoom_connection === "active") {
                 $('[data="zoom-connected"]').show();
                 $('[data-action-req="zoom"]').hide();
+                $('.zoom-connect-text').val("Disconnect");
             }
 
         },
