@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     data: JSON.stringify({ code: code }),
     success: function (response) {
       
-      showToast('success','Zoom has been successfully connected!');
+      localStorage.setItem('zoom','connected');
       window.location.href = "/app/my-account";
 
     },

@@ -31,6 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getUserIntegrationStatus() {
 
+    // confirm zoom connection success if needed
+    if (localStorage.getItem('zoom')==="connected"){
+        showToast('success',"Zoom has been successfully connected");
+        localStorage.removeItem('zoom');
+    }
 
     $.ajax({
         url: baseURL + 'api:r5LJ9mL0/get_user_integrations', 
