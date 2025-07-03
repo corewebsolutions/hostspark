@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data-api-button="stripe-connect"]').on('click', function () {
 
         const $btn = $(this);
-        $btn.prop('disabled', true).text('Redirecting...');
+        $btn.prop('disabled', true).text('Redirecting To Stripe...');
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/connect_stripe_account', 
