@@ -44,6 +44,32 @@ function initApp() {
 
 }
 
+// Toast
+window.showToast = function (type, message) {
+  const $toast = $('.toast');
+
+  // Set background color
+  if (type === 'success') {
+    $toast.css('background-color', '#24B372');
+  } else if (type === 'error') {
+    $toast.css('background-color', '#ff5050');
+  } else {
+    console.warn('Invalid toast type');
+    return;
+  }
+
+  // Set message
+  $toast.find('div').text(message);
+
+  // Slide down
+  $toast
+    .stop(true, true)
+    .css('display', 'flex')
+    .animate({ top: '0px' }, 400)
+    .delay(2000) // 2 seconds visible
+    .animate({ top: '-100px' }, 400);
+};
+
 // Button Loader Animation
 window.setLoadingState = function(isLoading, formEl) {
   let $form;
@@ -332,3 +358,4 @@ function loadUserAvatar() {
   }
   
 }
+
