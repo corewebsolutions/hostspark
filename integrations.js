@@ -64,6 +64,7 @@ function getUserIntegrationStatus() {
                 $('[data="zoom-connected"]').show();
                 $('[data-action-req="zoom"]').hide();
                 $('.zoom-connect-text').text("Disconnect");
+                $('#zoom-connect-icon').text("");
             }
 
         },
