@@ -15,13 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             success: function (response) {
 
-                alert('success!')
-                /*if (response.url) {
+                if (response.url) {
                     window.location.href = response.url; // redirect to Stripe onboarding
                 } else {
                     alert("Unable to connect to Stripe. Please try again.");
                     $btn.prop('disabled', false).text('Connect Stripe');
-                }*/
+                }
             },
             error: function (xhr) {
                 const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
