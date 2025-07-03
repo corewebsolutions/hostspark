@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Step 2: Send code to your Xano backend for secure token exchange
   $.ajax({
-    url: "https://xukl-cktx-zcsb.n7e.xano.io/api:xAumndFJ/zoom_oauth_redirect",
+    url: baseURL + "api:xAumndFJ/zoom_oauth_redirect",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify({ code: code }),
