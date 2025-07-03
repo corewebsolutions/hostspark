@@ -47,6 +47,7 @@ function getUserIntegrationStatus() {
             }else if (response.stripe_connection === "pending_items") {
                 $('[data="stripe-connected"]').hide();
                 $('[data-action-req="stripe"]').show();
+                $('[data-api-button="stripe-connect"]').text("Continue Stripe Setup");
             }else if (response.stripe_connection === "active") {
                 $('[data="stripe-connected"]').show();
                 $('[data-action-req="stripe"]').hide();
