@@ -98,7 +98,9 @@ function disconnectZoom() {
     },
     success: function (response) {
 
-        alert('success!')
+        alert('Zoom disconnected!');
+        getUserIntegrationStatus(); 
+        
     },
     error: function (xhr) {
 
