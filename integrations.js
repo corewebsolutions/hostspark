@@ -98,7 +98,6 @@ function disconnectZoom() {
     },
     success: function (response) {
 
-        alert('Zoom disconnected!');
         getUserIntegrationStatus(); 
         showToast('success', 'Zoom has been successfully disconnected.');
         
