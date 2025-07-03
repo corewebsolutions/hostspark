@@ -49,43 +49,49 @@ function getUserIntegrationStatus() {
             if (response.stripe_connection === "not_connected"){
                 $('[data="stripe-connected"]').hide();
                 $('[data-action-req="stripe"]').hide();
+                $('[data-not-connected="stripe"]').show();
             }else if (response.stripe_connection === "pending_items") {
                 $('[data="stripe-connected"]').hide();
+                $('[data-not-connected="stripe"]').hide();
                 $('[data-action-req="stripe"]').show();
                 $('.integration-button.stripe').text('Continue Stripe Setup');
             }else if (response.stripe_connection === "active") {
                 $('[data="stripe-connected"]').show();
                 $('[data-action-req="stripe"]').hide();
+                $('[data-not-connected="stripe"]').hide();
             }
 
             // zoom
             if (response.zoom_connection === "not_connected") {
-            $('[data="zoom-connected"]').hide();
-            $('[data-action-req="zoom"]').hide();
-            $('.zoom-connect-text').text("Connect");
-            $('#zoom-connect-icon').text("");
-            $('#zoom-integration-button')
-                .attr(
-                'href',
-                'https://zoom.us/oauth/authorize?response_type=code&client_id=qvUnchNxSuax82ydEYhA&redirect_uri=https://host-spark.webflow.io/zoom-sign-in'
-                )
-                .off('click'); // remove disconnect behavior if previously bound
+                $('[data="zoom-connected"]').hide();
+                $('[data-action-req="zoom"]').hide();
+                $('[data-not-connected="zoom"]').show();
+                $('.zoom-connect-text').text("Connect");
+                $('#zoom-connect-icon').text("");
+                $('#zoom-integration-button')
+                    .attr(
+                    'href',
+                    'https://zoom.us/oauth/authorize?response_type=code&client_id=qvUnchNxSuax82ydEYhA&redirect_uri=https://host-spark.webflow.io/zoom-sign-in'
+                    )
+                    .off('click'); // remove disconnect behavior if previously bound
             } else if (response.zoom_connection === "pending_items") {
-            $('[data="zoom-connected"]').hide();
-            $('[data-action-req="zoom"]').show();
+                $('[data="zoom-connected"]').hide();
+                $('[data-action-req="zoom"]').show();
+                $('[data-not-connected="zoom"]').hide();
             } else if (response.zoom_connection === "active") {
-            $('[data="zoom-connected"]').show();
-            $('[data-action-req="zoom"]').hide();
-            $('.zoom-connect-text').text("Disconnect");
-            $('#zoom-connect-icon').text("");
-            $('#zoom-integration-button')
-                .attr('href', '')
-                .off('click') 
-                .on('click', function (e) {
-                e.preventDefault();
-                $('.zoom-connect-text').text("Disconnecting...");
-                disconnectZoom();
-                });
+                $('[data-not-connected="zoom"]').hide();
+                $('[data="zoom-connected"]').show();
+                $('[data-action-req="zoom"]').hide();
+                $('.zoom-connect-text').text("Disconnect");
+                $('#zoom-connect-icon').text("");
+                $('#zoom-integration-button')
+                    .attr('href', '')
+                    .off('click') 
+                    .on('click', function (e) {
+                    e.preventDefault();
+                    $('.zoom-connect-text').text("Disconnecting...");
+                    disconnectZoom();
+                    });
             }
 
         },
