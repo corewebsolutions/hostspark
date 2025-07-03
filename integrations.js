@@ -41,22 +41,27 @@ function getUserIntegrationStatus() {
         success: function (response) {
 
             // stripe
-            if (response.is_stripe_connected == true){
-                $('[data="stripe-connected"]').show();
-            }else {
+            if (response.stripe_connection === "not_connected"){
                 $('[data="stripe-connected"]').hide();
+                $('[data-action-req="stripe"]').hide();
+            }else if (response.stripe_connection === "pending_items") {
+                $('[data="stripe-connected"]').hide();
+                $('[data-action-req="stripe"]').show();
+            }else if (response.stripe_connection === "active") {
+                $('[data="stripe-connected"]').show();
+                $('[data-action-req="stripe"]').hide();
             }
+
             // zoom
-            if (response.is_zoom_connected == true){
-                $('[data="zoom-connected"]').show();
-            }else {
+            if (response.zoom_connection === "not_connected"){
                 $('[data="zoom-connected"]').hide();
-            }
-            // zapier
-            if (response.zapier_api_key != null){
-                $('[data="zapier-connected"]').show();
-            }else {
-                $('[data="zapier-connected"]').hide();
+                $('[data-action-req="zoom"]').hide();
+            }else if (response.zoom_connection === "pending_items") {
+                $('[data="zoom-connected"]').hide();
+                $('[data-action-req="zoom"]').show();
+            }else if (response.zoom_connection === "active") {
+                $('[data="zoom-connected"]').show();
+                $('[data-action-req="zoom"]').hide();
             }
 
         },
