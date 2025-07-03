@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
     url: baseURL + "api:xAumndFJ/zoom_oauth_redirect",
     type: "POST",
     contentType: "application/json",
+    headers: {
+    Authorization: "Bearer " + localStorage.authToken,
+    },
     data: JSON.stringify({ code: code }),
     success: function (response) {
       console.log("Zoom connection successful:", response);
