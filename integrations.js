@@ -47,7 +47,7 @@ function getUserIntegrationStatus() {
             }else if (response.stripe_connection === "pending_items") {
                 $('[data="stripe-connected"]').hide();
                 $('[data-action-req="stripe"]').show();
-                $('.cta-button-small.stripe').text('Continue Stripe Setup');
+                $('.integration-button.stripe').text('Continue Stripe Setup');
             }else if (response.stripe_connection === "active") {
                 $('[data="stripe-connected"]').show();
                 $('[data-action-req="stripe"]').hide();
