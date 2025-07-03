@@ -66,7 +66,7 @@ window.showToast = function (type, message) {
     .stop(true, true)
     .css('display', 'flex')
     .animate({ top: '0px' }, 400)
-    .delay(2000) // 2 seconds visible
+    .delay(2500) 
     .animate({ top: '-100px' }, 400);
 };
 

@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     data: JSON.stringify({ code: code }),
     success: function (response) {
-      console.log("Zoom connection successful:", response);
+
       window.location.href = "/app/my-account";
+      showToast('success','Zoom has been successfully connected!')
     },
     error: function (xhr, status, error) {
       console.error("Zoom OAuth Error:", error);
