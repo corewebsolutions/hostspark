@@ -282,7 +282,7 @@ function dropDownNavigation(){
   // my account
   $('#top-nav-my-account').on('click', function () {
     $('#my-account').click();
-    $('#account-change-plan').click();
+    //$('#account-change-plan').click();
 
   });
 
