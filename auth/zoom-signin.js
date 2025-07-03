@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     success: function (response) {
       
       showToast('success','Zoom has been successfully connected!');
-      window.location.href = "/app/my-account";
+      $('#my-account').click();
+      localStorage.setItem('pageId',"my-account");
 
     },
     error: function (xhr, status, error) {
