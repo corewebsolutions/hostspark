@@ -57,7 +57,9 @@ function getUserIntegrationStatus() {
             if (response.zoom_connection === "not_connected") {
             $('[data="zoom-connected"]').hide();
             $('[data-action-req="zoom"]').hide();
-            $('#zoom-integration-button').text('Connect')
+            $('.zoom-connect-text').text("Connect");
+            $('#zoom-connect-icon').text("");
+            $('#zoom-integration-button')
                 .attr(
                 'href',
                 'https://zoom.us/oauth/authorize?response_type=code&client_id=qvUnchNxSuax82ydEYhA&redirect_uri=https://host-spark.webflow.io/zoom-sign-in'
