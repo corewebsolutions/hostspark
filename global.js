@@ -372,7 +372,7 @@ window.showLoader = function () {
   $loader.stop(true, true).css('opacity', 0).show().animate(
     { opacity: 1 },
     400, // duration
-    'easeOutQuad' // easing (requires jQuery UI for named eases, otherwise default to 'swing')
+    'swing'
   );
 };
 
@@ -384,11 +384,10 @@ window.hideLoader = function () {
   $loader.stop(true, true).animate(
     { opacity: 0 },
     400,
-    'easeOutQuad',
+    'swing',
     function () {
       $loader.hide();
     }
   );
 };
-
 
