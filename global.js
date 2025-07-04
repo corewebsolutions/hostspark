@@ -331,7 +331,7 @@ function dropDownNavigation() {
 
 }
 
-// Load User Avatar
+// Load User Avatar/Info
 function loadUserAvatar() {
 
   const firstName = localStorage.getItem('firstName') || '';
@@ -342,6 +342,7 @@ function loadUserAvatar() {
 
   // 1. Update full name in all elements with data=user_name
   $('[data=user_name]').text(fullName);
+  $('[data=first_name]').text(firstName);
 
   // 2. Handle avatar display
   const $avatarImg = $('[data=avatar]');
