@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     success: function (response) {
       
       localStorage.setItem('zoom','connected');
-      window.location.href = "/app/my-account";
+      window.location.href = "/app/integrations";
 
     },
 
