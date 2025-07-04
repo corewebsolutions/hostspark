@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getUserIntegrationStatus() {
 
+    showLoader();
     // confirm zoom connection success if needed
     if (localStorage.getItem('zoom')==="connected"){
         showToast('success',"Zoom has been successfully connected");
@@ -93,6 +94,8 @@ function getUserIntegrationStatus() {
                     disconnectZoom();
                     });
             }
+
+            hideLoader();
 
         },
         error: function (xhr) {

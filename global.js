@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function authUser() {
 
+  showLoader();
+
   $.ajax({
     url: baseURL + "api:xAumndFJ/auth/me",
     type: "GET",
@@ -25,6 +27,7 @@ function authUser() {
     success: function (data) {
 
       initApp();
+      hideLoader();
     },
     error: function (error) {
       window.location.href = "/auth/login";
@@ -359,5 +362,33 @@ function loadUserAvatar() {
   }
   
 }
+
+// Global Loader Control
+window.showLoader = function () {
+  const $loader = $('.loader');
+
+  if (!$loader.length) return;
+
+  $loader.stop(true, true).css('opacity', 0).show().animate(
+    { opacity: 1 },
+    400, // duration
+    'easeOutQuad' // easing (requires jQuery UI for named eases, otherwise default to 'swing')
+  );
+};
+
+window.hideLoader = function () {
+  const $loader = $('.loader');
+
+  if (!$loader.length) return;
+
+  $loader.stop(true, true).animate(
+    { opacity: 0 },
+    400,
+    'easeOutQuad',
+    function () {
+      $loader.hide();
+    }
+  );
+};
 
 
