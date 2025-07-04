@@ -27,6 +27,8 @@ function authUser() {
     success: function (data) {
 
       initApp();
+    },
+    complete: function(){
       hideLoader();
     },
     error: function (error) {
