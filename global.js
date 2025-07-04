@@ -368,28 +368,11 @@ function loadUserAvatar() {
 // Global Loader Control
 window.showLoader = function () {
   const $loader = $('.loader');
-
-  if (!$loader.length) return;
-
-  $loader.stop(true, true).css('opacity', 0).css('display','flex').animate(
-    { opacity: 1 },
-    400, // duration
-    'swing'
-  );
+  $loader.css('display','flex');
 };
 
 window.hideLoader = function () {
   const $loader = $('.loader');
-
-  if (!$loader.length) return;
-
-  $loader.stop(true, true).animate(
-    { opacity: 0 },
-    400,
-    'swing',
-    function () {
-      $loader.hide();
-    }
-  );
+  $loader.hide();
 };
 
