@@ -305,12 +305,12 @@ function ajaxErrorHandler() {
 // Dropdown Navigation
 function dropDownNavigation() {
 
-  $('#top-nav-my-account').on('click', function (e) {
+  $('#top-nav-account-settings').on('click', function (e) {
     e.preventDefault();
-    localStorage.setItem("pageId", "my-account");
+    localStorage.setItem("pageId", "account-settings");
     localStorage.removeItem("pageRefreshParam");
-    history.pushState("my-account", null, "/app/my-account");
-    $('#my-account').click();
+    history.pushState("account-settings", null, "/app/account-settings");
+    $('#account-settings').click();
   });
 
   $('#top-nav-support').on('click', function (e) {
