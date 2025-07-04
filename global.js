@@ -369,7 +369,7 @@ window.showLoader = function () {
 
   if (!$loader.length) return;
 
-  $loader.stop(true, true).css('opacity', 0).show().animate(
+  $loader.stop(true, true).css('opacity', 0).css('display','flex').animate(
     { opacity: 1 },
     400, // duration
     'swing'
