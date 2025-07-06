@@ -55,7 +55,7 @@ window.showToast = function (type, message) {
 
   // Set background color
   if (type === 'success') {
-    $toast.css('background-color', '#24B372');
+    $toast.css('background-color', '#03d37e');
   } else if (type === 'error') {
     $toast.css('background-color', '#ff5050');
   } else {
