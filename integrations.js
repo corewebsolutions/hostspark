@@ -47,16 +47,16 @@ function getUserIntegrationStatus() {
         success: function (response) {
 
             // stripe
-            if (response.stripe_connection === "not_connected"){
+            if (response.stripe_connect_status === "not_connected"){
                 $('[data="stripe-connected"]').hide();
                 $('[data-action-req="stripe"]').hide();
                 $('[data-not-connected="stripe"]').show();
-            }else if (response.stripe_connection === "pending_items") {
+            }else if (response.stripe_connect_status === "pending_items") {
                 $('[data="stripe-connected"]').hide();
                 $('[data-not-connected="stripe"]').hide();
                 $('[data-action-req="stripe"]').show();
                 $('.integration-button.stripe').text('Continue Stripe Setup');
-            }else if (response.stripe_connection === "active") {
+            }else if (response.stripe_connect_status === "active") {
                 $('[data="stripe-connected"]').show();
                 $('[data-action-req="stripe"]').hide();
                 $('[data-not-connected="stripe"]').hide();
