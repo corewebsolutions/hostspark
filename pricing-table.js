@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="scale-price"]').text('3,290/');
 
     // Set data-plan attributes for annual
-    $('#launch-button').attr('data-plan', 'launch-annual');
-    $('#growth-button').attr('data-plan', 'growth-annual');
-    $('#scale-button').attr('data-plan', 'scale-annual');
+    $('#launch-button').attr('data-plan', 'launch-annual').attr('plan-name', 'Launch - Annual Plan');
+    $('#growth-button').attr('data-plan', 'growth-annual').attr('plan-name', 'Growth - Annual Plan');
+    $('#scale-button').attr('data-plan', 'scale-annual').attr('plan-name', 'Scale - Annual Plan');
   });
 
   // Monthly pricing clicked
@@ -29,21 +29,23 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="scale-price"]').text('329/');
 
     // Set data-plan attributes for monthly
-    $('#launch-button').attr('data-plan', 'launch-monthly');
-    $('#growth-button').attr('data-plan', 'growth-monthly');
-    $('#scale-button').attr('data-plan', 'scale-monthly');
+    $('#launch-button').attr('data-plan', 'launch-monthly').attr('plan-name', 'Launch - Monthly Plan');
+    $('#growth-button').attr('data-plan', 'growth-monthly').attr('plan-name', 'Growth - Monthly Plan');
+    $('#scale-button').attr('data-plan', 'scale-monthly').attr('plan-name', 'Scale - Monthly Plan');
   });
 
     // User selects plan...
     $('[data="plan-button"]').on('click', function () {
     // Get the value from the data-plan attribute
     const selectedPlan = $(this).attr('data-plan');
+    const planName = $(this).attr('plan-name');
 
     // Store it in localStorage
     localStorage.setItem('planSelect', selectedPlan);
+    localStorage.setItem('planName', planName);
 
     // Redirect with query param
-    window.location.href = "/auth/sign-up?plan=" + encodeURIComponent(selectedPlan);
+    window.location.href = "/auth/sign-up";
     });
 
 });
