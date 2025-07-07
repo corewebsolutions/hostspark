@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.avatar);
                 }
 
-                window.location.href = response.url; // stripe hosted checkout
+                window.location.href = response; // stripe hosted checkout
 
                 setLoadingState(false);
 
