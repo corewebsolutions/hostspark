@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  // Set data-plan attributes for monthly
+  $('#launch-button').attr('data-plan', 'price_1RiK2gPAlNurIsgyVXJICBxm');
+  $('#growth-button').attr('data-plan', 'price_1RiK3TPAlNurIsgyCdyEWI3R');
+  $('#scale-button').attr('data-plan', 'price_1RiK4GPAlNurIsgyRWDRQOl1');
+
   // Toggle active class for subscription frequency (monthly or annual)
   $('.frequency-button').on('click', function () {
     $('.frequency-button').removeClass('active');
@@ -38,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="plan-button"]').on('click', function () {
     // Get the value from the data-plan attribute
     const selectedPlan = $(this).attr('data-plan');
-    const planName = $(this).attr('plan-name');
 
     // Store it in localStorage
     localStorage.setItem('planSelect', selectedPlan);
