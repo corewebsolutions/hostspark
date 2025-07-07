@@ -156,8 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.avatar);
                 }
 
-                localStorage.setItem("pageId","dashboard");
-                window.location.href = "/app/dashboard";
+                window.location.href = response.url; // stripe hosted checkout
 
                 setLoadingState(false);
 
