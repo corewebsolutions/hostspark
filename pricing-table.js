@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Store it in localStorage
     localStorage.setItem('planSelect', selectedPlan);
-    localStorage.setItem('planName', planName);
 
     // Redirect with query param
     window.location.href = "/auth/sign-up";
