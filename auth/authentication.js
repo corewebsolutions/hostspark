@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const $forgotPassForm = $('#forgot-password-form'); // forgot password form
     const $loginForm = $('#login-form'); // login form
     let planName = localStorage.getItem('planName'); // get selected plan name from local storage
-    
-    $('[data="zoom-connected"]').text(planName);
+    $('[signup="plan-name"]').text(planName);
 
 
     // check for redirected users after sign up for additional questions...
