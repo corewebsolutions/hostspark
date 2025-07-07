@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add selected plan from localStorage
         const selectedPlan = localStorage.getItem("planSelect");
         if (selectedPlan) {
-        payload.plan = selectedPlan;
+        payload.plan_price_id = selectedPlan;
         }
 
 
