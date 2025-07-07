@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const $onboardingManual = $('#signup-manual-data-form'); // onboarding form - manual users
     const $forgotPassForm = $('#forgot-password-form'); // forgot password form
     const $loginForm = $('#login-form'); // login form
-    let planName = localStorage.getItem('planName'); // get selected plan name from local storage
+    let planName = localStorage.getItem('planSelect'); // get selected plan name from local storage
     $('[signup="plan-name"]').text(planName);
 
 
