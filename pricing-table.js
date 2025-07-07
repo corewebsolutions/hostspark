@@ -8,10 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Annual pricing clicked
   $('#annual-pricing').on('click', function () {
+    $('.plan-freq').text('year');
     // Update price text
-    $('[data="launch-price"]').text('290/year');
-    $('[data="growth-price"]').text('1,090/year');
-    $('[data="scale-price"]').text('3,290/year');
+    $('[data="launch-price"]').text('290/');
+    $('[data="growth-price"]').text('1,090/');
+    $('[data="scale-price"]').text('3,290/');
 
     // Set data-api-button attributes for annual
     $('#launch-button').attr('data-api-button', 'launch-annual');
@@ -21,10 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Monthly pricing clicked
   $('#monthly-pricing').on('click', function () {
+    $('.plan-freq').text('month');
     // Update price text
-    $('[data="launch-price"]').text('29/month');
-    $('[data="growth-price"]').text('109/month');
-    $('[data="scale-price"]').text('329/month');
+    $('[data="launch-price"]').text('29/');
+    $('[data="growth-price"]').text('109/');
+    $('[data="scale-price"]').text('329/');
 
     // Set data-api-button attributes for monthly
     $('#launch-button').attr('data-api-button', 'launch-monthly');
