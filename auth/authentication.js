@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const $onboardingManual = $('#signup-manual-data-form'); // onboarding form - manual users
     const $forgotPassForm = $('#forgot-password-form'); // forgot password form
     const $loginForm = $('#login-form'); // login form
-    let planName = localStorage.getItem('planSelect'); // get selected plan name from local storage
-    $('[signup="plan-name"]').text(planName);
+    const plan = localStorage.getItem('selectedPlan');
 
 
     // check for redirected users after sign up for additional questions...
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         url: baseURL + 'api:xAumndFJ/auth/signup',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ email, password }),
+        data: JSON.stringify({ email, password, }),
         success: function (response) {
 
             // hide signup form
@@ -132,6 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
         setLoadingState(true, this);
 
         const payload = createPayload($onboardForm);
+
+        // Add selected plan from localStorage
+        const selectedPlan = localStorage.getItem("planSelect");
+        if (selectedPlan) {
+        payload.plan = selectedPlan;
+        }
+
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/onboarding_questions',
