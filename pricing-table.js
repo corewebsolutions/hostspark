@@ -34,4 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#scale-button').attr('data-plan', 'scale-monthly');
   });
 
+  // plan selected flow:
+  $('[data="plan-button"]').on('click', function () {
+  // Get value of the clicked button's data-plan attribute
+  const selectedPlan = $(this).attr('data-plan');
+
+  // Store it in localStorage
+  localStorage.setItem('planSelect', selectedPlan);
+
+  // Redirect to sign-up page
+  window.location.href = "/auth/sign-up"; // Change this if your signup URL differs
+});
+
 });
