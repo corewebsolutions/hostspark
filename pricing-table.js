@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="growth-price"]').text('1,090/');
     $('[data="scale-price"]').text('3,290/');
 
-    // Set data-api-button attributes for annual
-    $('#launch-button').attr('data-api-button', 'launch-annual');
-    $('#growth-button').attr('data-api-button', 'growth-annual');
-    $('#scale-button').attr('data-api-button', 'scale-annual');
+    // Set data-plan attributes for annual
+    $('#launch-button').attr('data-plan', 'launch-annual');
+    $('#growth-button').attr('data-plan', 'growth-annual');
+    $('#scale-button').attr('data-plan', 'scale-annual');
   });
 
   // Monthly pricing clicked
@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="growth-price"]').text('109/');
     $('[data="scale-price"]').text('329/');
 
-    // Set data-api-button attributes for monthly
-    $('#launch-button').attr('data-api-button', 'launch-monthly');
-    $('#growth-button').attr('data-api-button', 'growth-monthly');
-    $('#scale-button').attr('data-api-button', 'scale-monthly');
+    // Set data-plan attributes for monthly
+    $('#launch-button').attr('data-plan', 'launch-monthly');
+    $('#growth-button').attr('data-plan', 'growth-monthly');
+    $('#scale-button').attr('data-plan', 'scale-monthly');
   });
 
 });
