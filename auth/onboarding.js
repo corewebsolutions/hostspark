@@ -16,8 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (localStorage.getItem('planSelect') !== 'price_1RiK1wPAlNurIsgyBfN20Moy') {
-    const $btn = $('.loading-button');
 
+    const $btn = $('[data-button="payment-button"]');
+      
     // Update visible text
     $btn.find('.btn-text').text('Continue to Payment');
 
