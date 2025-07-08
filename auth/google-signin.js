@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     type: "POST",
     data: {
       code: code,
-      plan: localStorage.getItem('planSelected')
+      plan: localStorage.getItem('planSelect')
     },
     success: function (response) {
 

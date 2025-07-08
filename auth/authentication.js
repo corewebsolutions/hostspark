@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
-        const plan = localStorage.getItem('planSelected');
+        const plan = localStorage.getItem('planSelect');
 
         if (!email || !password) {
         showFormError('Email and password are required.');
