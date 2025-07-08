@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
     // check for redirected users after sign up for additional questions...
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#signup-manual-user-block').show(); 
         $('#signup-google-user-block').hide(); 
         }
+    } else {
+        window.location.href = "/auth/login";
     }
 
     if (localStorage.getItem('planSelect') !== 'price_1RiK1wPAlNurIsgyBfN20Moy') {
