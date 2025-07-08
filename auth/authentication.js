@@ -79,18 +79,28 @@ document.addEventListener("DOMContentLoaded", function () {
         success: function (response) {
 
             localStorage.setItem("authToken", response.authToken);
+            localStorage.setItem("authMode", response.user.auth_mode);
             localStorage.setItem("firstName", response.user.first_name);
             localStorage.setItem("lastName", response.user.last_name);
             localStorage.setItem("email", response.user.email);
+            if (response.user.avatar){
+                localStorage.setItem("avatar", response.user.avatar);
+            }
+
 
             setLoadingState(false);
 
-            localStorage.setItem("pageId","dashboard");
-            window.location.href = "/app/dashboard";
+            if (response.user.industry == null) {
+                window.location.href = "/auth/onboarding";
+            } else {
+                window.location.href = "/app/dashboard";
+                localStorage.setItem("pageId","dashboard");
+            }
+
 
         },
         error: function (xhr) {
-            const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
+            const err = xhr.responseJSON?.message || 'Login failed. Please try again.';
             showFormError(err);
             setLoadingState(false);
         }
