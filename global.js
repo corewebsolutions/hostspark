@@ -43,6 +43,10 @@ function initApp() {
   $('#tester').on('click', function () {
     showToast('success','This is a test!')
   });
+
+  $('#tester-error').on('click', function () {
+    showToast('error','This is a test!')
+  });
   
   urlRouting();
   loadCurrentPage();
