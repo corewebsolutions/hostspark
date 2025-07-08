@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     url:  baseURL + "api:xAumndFJ/google_auth",
     type: "POST",
     data: {
-      code: code
+      code: code,
+      plan: localStorage.getItem('planSelected')
     },
     success: function (response) {
 

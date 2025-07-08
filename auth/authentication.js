@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
+        const plan = localStorage.getItem('planSelected');
 
         if (!email || !password) {
         showFormError('Email and password are required.');
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         url: baseURL + 'api:xAumndFJ/auth/signup',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ email, password, }),
+        data: JSON.stringify({ email, password, plan }),
         success: function (response) {
 
             // hide signup form
