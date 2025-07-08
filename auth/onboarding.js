@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (localStorage.getItem("onboarding")) {
+        localStorage.setItem('pageId','dashboard');
         window.location.href = '/app/dashboard';
     }
 
