@@ -2,25 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // detect signup and onboarding forms...
     const $form = $('#signup-form'); // signup form 
-    const $onboardingGoogle = $('#signup-google-data-form'); // onboarding form - google users
-    const $onboardingManual = $('#signup-manual-data-form'); // onboarding form - manual users
     const $forgotPassForm = $('#forgot-password-form'); // forgot password form
     const $loginForm = $('#login-form'); // login form
   
-
-
-    // check for redirected users after sign up for additional questions...
-    if (localStorage.getItem("authToken")) { 
-        $('#sign-up-block').hide(); // hide signup form
-
-        if (localStorage.getItem("authMode") === "google") {
-        $('#signup-google-user-block').show(); 
-        $('#signup-manual-user-block').hide(); 
-        } else if (localStorage.getItem("authMode") === "manual") {
-        $('#signup-manual-user-block').show(); 
-        $('#signup-google-user-block').hide(); 
-        }
-    }
 
     //Signup form submitted...
     $form.on('submit', function (e) {
@@ -54,14 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("authMode", "manual");
             localStorage.setItem("authToken", response.authToken);
 
-            // show appropriate onboarding form
-            if (localStorage.getItem("authMode") === "manual") {
-                $('#signup-manual-user-block').show();
-                $('#signup-google-user-block').hide();
-            } else if (localStorage.getItem("authMode") === "google") {
-                $('#signup-manual-user-block').hide();
-                $('#signup-google-user-block').show();
-            }
+            // Redirect with query param
+            window.location.href = "/auth/onboarding";
 
             setLoadingState(false);
 
@@ -118,58 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         });
 
-    });
-
-
-    // Onboarding forms submitted...
-    $onboardingGoogle.add($onboardingManual).on('submit', function (e) {
-
-        e.preventDefault();
-
-
-        const $onboardForm = $(this); // dynamic reference to the submitted form
-        setLoadingState(true, this);
-
-        const payload = createPayload($onboardForm);
-
-        // Add selected plan from localStorage
-        const selectedPlan = localStorage.getItem("planSelect");
-        if (selectedPlan) {
-        payload.plan_price_id = selectedPlan;
-        }
-
-
-        $.ajax({
-            url: baseURL + 'api:xAumndFJ/onboarding_questions',
-            type: 'POST',
-            contentType: 'application/json',
-            headers: {
-                Authorization: "Bearer " + localStorage.authToken,
-            },
-            data: JSON.stringify(payload),
-            success: function (response) {
-
-                localStorage.setItem("firstName", response.user.first_name);
-                localStorage.setItem("lastName", response.user.last_name);
-                localStorage.setItem("email", response.user.email);
-                if (response.avatar) {
-                localStorage.setItem("avatar", response.user.avatar);
-                }
-
-                window.location.href = response.url; // stripe hosted checkout
-
-                setLoadingState(false);
-
-            },
-            error: function (xhr) {
-
-                const err = xhr.responseJSON?.message || 'Submission failed. Please try again.';
-                showFormError(err);
-                setLoadingState(false);
-            }
-        });
-
-        
     });
 
 
