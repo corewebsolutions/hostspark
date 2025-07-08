@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
               localStorage.setItem("pageId","dashboard");
               window.location.href = "/app/dashboard"; 
           } else {
-              window.location.href = "/auth/sign-up"; 
+              window.location.href = "/auth/onboarding"; 
           }
           
         } else {
