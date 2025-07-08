@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("email", response.user.email);
           localStorage.setItem("avatar", response.user.avatar);
 
-          if (response.new_user == false) {
+          if (response.new_user == false && response.user.industry != null ) {
               localStorage.setItem("pageId","dashboard");
               window.location.href = "/app/dashboard"; 
           } else {
