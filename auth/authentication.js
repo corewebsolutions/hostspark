@@ -149,14 +149,14 @@ document.addEventListener("DOMContentLoaded", function () {
             data: JSON.stringify(payload),
             success: function (response) {
 
-                localStorage.setItem("firstName", response.first_name);
-                localStorage.setItem("lastName", response.last_name);
-                localStorage.setItem("email", response.email);
+                localStorage.setItem("firstName", response.user.first_name);
+                localStorage.setItem("lastName", response.user.last_name);
+                localStorage.setItem("email", response.user.email);
                 if (response.avatar) {
-                localStorage.setItem("avatar", response.avatar);
+                localStorage.setItem("avatar", response.user.avatar);
                 }
 
-                window.location.href = response; // stripe hosted checkout
+                window.location.href = response.url; // stripe hosted checkout
 
                 setLoadingState(false);
 
