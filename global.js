@@ -70,9 +70,9 @@ window.showToast = function (type, message) {
   $toast
     .stop(true, true)
     .css('display', 'flex')
-    .animate({ top: '0px' }, 400)
+    .animate({ bottom: '0px' }, 400)
     .delay(2500) 
-    .animate({ top: '-100px' }, 400);
+    .animate({ bottom: '-100px' }, 400);
 };
 
 // Button Loader Animation
