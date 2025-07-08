@@ -19,14 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (localStorage.getItem('planSelect') !== 'price_1RiK1wPAlNurIsgyBfN20Moy') {
 
-    const $btn = $('[data-button="payment-button"]');
-      
-    // Update visible text
-    $btn.find('.btn-text').text('Continue to Payment');
+        const $btn = $('[data-button="payment-button"]');
+        
+        // Update visible text
+        $btn.find('.btn-text').text('Continue to Payment');
 
-    // Update loading text attribute
-    $btn.attr('data-loading-text', 'One Moment...');
+        // Update loading text attribute
+        $btn.attr('data-loading-text', 'One Moment...');
     }
+
+    if (localStorage.getItem("onboarding")) {
+        window.location.href = '/app/dashboard';
+    }
+
     
     const $onboardingGoogle = $('#signup-google-data-form'); // onboarding form - google users
     const $onboardingManual = $('#signup-manual-data-form'); // onboarding form - manual users
@@ -60,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (response) {
 
                 localStorage.setItem("firstName", response.user.first_name);
+                localStorage.setItem("onboarding", 'completed');
                 localStorage.setItem("lastName", response.user.last_name);
                 localStorage.setItem("email", response.user.email);
                 if (response.avatar) {
