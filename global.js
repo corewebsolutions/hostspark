@@ -40,6 +40,10 @@ function authUser() {
 
 function initApp() {
 
+  $('#tester').on('click', function () {
+    showToast('success','This is a test!')
+  });
+  
   urlRouting();
   loadCurrentPage();
   dropDownNavigation();
