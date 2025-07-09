@@ -73,7 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.user.avatar);
                 }
 
-                window.location.href = response.url; // stripe hosted checkout
+                if (response.plan_group_id == 0) { // if starter plan, redirect user to dashboard
+                    window.location.href = "/app/dashboard"; 
+                } else { // send them to stripe hosted checkout url
+                    window.location.href = response.url;
+                }
+
+
 
                 setLoadingState(false);
 
