@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             success: function (response) {
 
-                //window.location.href = response; // redirect to Stripe onboarding
+                window.location.href = response; // redirect to Stripe portal
 
             },
             error: function (xhr) {
