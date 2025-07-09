@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="scale-price"]').text('3,290/');
 
     // Set data-plan attributes for annual
+    $('#starter-button').attr('data-plan', 'price_1RiK1wPAlNurIsgyBfN20Moy');
     $('#launch-button').attr('data-plan', 'price_1RiK7MPAlNurIsgySEpHbwX2');
     $('#growth-button').attr('data-plan', 'price_1RiK8aPAlNurIsgynfsjnV3P');
     $('#scale-button').attr('data-plan', 'price_1RiK9GPAlNurIsgytOJzkdlw');
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="scale-price"]').text('329/');
 
     // Set data-plan attributes for monthly
+    $('#starter-button').attr('data-plan', 'price_1RiK1wPAlNurIsgyBfN20Moy');
     $('#launch-button').attr('data-plan', 'price_1RiK2gPAlNurIsgyVXJICBxm');
     $('#growth-button').attr('data-plan', 'price_1RiK3TPAlNurIsgyCdyEWI3R');
     $('#scale-button').attr('data-plan', 'price_1RiK4GPAlNurIsgyRWDRQOl1');
