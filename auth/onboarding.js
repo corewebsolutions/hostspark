@@ -69,11 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("onboarding", 'completed');
                 localStorage.setItem("lastName", response.user.last_name);
                 localStorage.setItem("email", response.user.email);
+                localStorage.setItem("planGroup",response.plan_group_id);
                 if (response.avatar) {
                 localStorage.setItem("avatar", response.user.avatar);
                 }
 
                 if (response.plan_group_id == 0) { // if starter plan, redirect user to dashboard
+                    localStorage.setItem('pageId','dashboard');
                     window.location.href = "/app/dashboard"; 
                 } else { // send them to stripe hosted checkout url
                     window.location.href = response.url;
