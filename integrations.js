@@ -27,6 +27,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Manage Stripe Account/Subscription (not connect)
+    $('[data-api-button="stripe-customer-portal"]').on('click', function () {
+
+        const $btn = $(this);
+        $btn.prop('disabled', true).text('One Moment...');
+
+        $.ajax({
+            url: baseURL + 'api:xAumndFJ/stripe_customer_portal', 
+            type: 'POST',
+            headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+            },
+            success: function (response) {
+
+                //window.location.href = response; // redirect to Stripe onboarding
+
+            },
+            error: function (xhr) {
+                const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
+                //showFormError(err);
+                $btn.prop('disabled', false).text('Connect Stripe');
+            }
+        });
+    });
+
 });
 
 function getUserIntegrationStatus() {
