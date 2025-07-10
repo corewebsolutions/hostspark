@@ -18,6 +18,19 @@ function authUser() {
 
 function initApp() {
 
+  let loaderAnimation = null;
+  const container = document.getElementById('lottie-loader');
+
+  if (container) {
+    loaderAnimation = lottie.loadAnimation({
+      container: container,
+      renderer: 'svg',
+      loop: true,
+      autoplay: false,
+      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6867f2086ff491eedcbcf424_0JfhGEDAD5.json' // replace with your actual file path
+    });
+  }
+
   authMe();
   urlRouting();
   loadCurrentPage();
@@ -318,10 +331,12 @@ function dropDownNavigation() {
 // Global Loader Control
 window.showLoader = function () {
   $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
+  if (loaderAnimation) loaderAnimation.play();
 };
 
 window.hideLoader = function () {
   $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
+  if (loaderAnimation) loaderAnimation.stop();
 };
 
 function userLocalStorageSettings(response) {
@@ -402,3 +417,4 @@ function authMe() {
   });
 
 }
+
