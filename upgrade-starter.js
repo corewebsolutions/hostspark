@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
         Authorization: "Bearer " + localStorage.authToken,
         },
+        data: JSON.stringify({ price_id: selectedPlan }),
         success: function (response) {
 
             window.location.href = response; // redirect to Stripe portal
