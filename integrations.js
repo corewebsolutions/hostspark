@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data-api-button="stripe-customer-portal"]').on('click', function () {
 
         const $btn = $(this);
-        $btn.prop('disabled', true).text('One Moment...');
+        $btn.prop('disabled', true).text('Loading Account Details...');
 
         $.ajax({
             url: baseURL + 'api:xAumndFJ/stripe_customer_portal', 
@@ -48,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             error: function (xhr) {
                 const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
-                //showFormError(err);
-                $btn.prop('disabled', false).text('Connect Stripe');
+                $btn.prop('disabled', false).text('Error Loading Your Account');
             }
         });
     });
