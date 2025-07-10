@@ -1,6 +1,6 @@
 // Store base URL Xano
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
-
+let loaderAnimation = null;
 
 function authUser() {
 
@@ -18,7 +18,6 @@ function authUser() {
 
 function initApp() {
 
-  let loaderAnimation = null;
   const container = document.getElementById('lottie-loader');
 
   if (container) {
