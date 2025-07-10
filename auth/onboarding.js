@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#sign-up-block').hide(); // hide signup form
 
         if (localStorage.getItem("authMode") === "google") {
-        $('#signup-google-user-block').show(); 
-        $('#signup-manual-user-block').hide(); 
-        } else if (localStorage.getItem("authMode") === "manual") {
-        $('#signup-manual-user-block').show(); 
-        $('#signup-google-user-block').hide(); 
+          $('#signup-google-user-block').show(); 
+          $('#signup-manual-user-block').hide(); 
+          } else if (localStorage.getItem("authMode") === "manual") {
+          $('#signup-manual-user-block').show(); 
+          $('#signup-google-user-block').hide(); 
         }
     } else {
         window.location.href = "/auth/login";
