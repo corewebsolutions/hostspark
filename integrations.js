@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    getUserIntegrationStatus(); // load user's integrations
-
     // Connect Stripe Account
     $('[data-api-button="stripe-connect"]').on('click', function () {
 
