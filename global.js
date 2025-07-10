@@ -23,6 +23,7 @@ function initApp() {
   dropDownNavigation();
   logOutUser();
   ajaxErrorHandler();
+  loadUserAvatarSettings();
 
 }
 
@@ -313,6 +314,31 @@ function dropDownNavigation() {
 
 }
 
+// Global Loader Control
+window.showLoader = function () {
+  const $loader = $('.loader');
+  $loader.css('display','flex');
+};
+
+window.hideLoader = function () {
+  const $loader = $('.loader');
+  $loader.hide();
+};
+
+function userLocalStorageSettings(response) {
+
+  localStorage.setItem("authToken", response.authToken);
+  localStorage.setItem("authMode", "google");
+  localStorage.setItem("firstName", response.user.first_name);
+  localStorage.setItem("lastName", response.user.last_name);
+  localStorage.setItem("email", response.user.email);
+  localStorage.setItem("planId", response.user.stripe_plan_id);
+  if (response.user.avatar){
+  localStorage.setItem("avatar", response.user.avatar);
+  }
+
+}
+
 // Load User Avatar/Info
 function loadUserAvatarSettings() {
 
@@ -342,27 +368,3 @@ function loadUserAvatarSettings() {
   
 }
 
-// Global Loader Control
-window.showLoader = function () {
-  const $loader = $('.loader');
-  $loader.css('display','flex');
-};
-
-window.hideLoader = function () {
-  const $loader = $('.loader');
-  $loader.hide();
-};
-
-function userLocalStorageSettings(response) {
-
-  localStorage.setItem("authToken", response.authToken);
-  localStorage.setItem("authMode", "google");
-  localStorage.setItem("firstName", response.user.first_name);
-  localStorage.setItem("lastName", response.user.last_name);
-  localStorage.setItem("email", response.user.email);
-  localStorage.setItem("planId", response.user.stripe_plan_id);
-  if (response.user.avatar){
-  localStorage.setItem("avatar", response.user.avatar);
-  }
-
-}
