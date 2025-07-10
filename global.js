@@ -402,6 +402,8 @@ function authMe() {
         localStorage.setItem('planId', response.price_id);
         localStorage.setItem('planGroup', response.group_id);
 
+        $('.plan-name-nav').text(response.name);
+
         if (response.group_id == 0) {
           $('.starter-upgrade-block').css('display','flex');
           $('.plan-counter').remove();
