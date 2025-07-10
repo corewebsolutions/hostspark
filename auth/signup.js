@@ -11,12 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setLoadingState(true, this);
 
-        let price_id = null; // Declare the variable outside the blocks
-
-        if (localStorage.getItem('planSelect')) {
-            price_id = localStorage.getItem('planSelect');
-        }
-
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
         

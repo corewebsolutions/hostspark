@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $btn.attr('data-loading-text', 'One Moment...');
 
     }
-    
+
 
     if (localStorage.getItem("onboarding")) {
         localStorage.setItem('pageId','dashboard');
@@ -59,11 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const payload = createPayload($onboardForm);
 
-        // Add selected plan from localStorage
-        const selectedPlan = localStorage.getItem("planSelect");
-        if (selectedPlan) {
-        payload.price_id = selectedPlan;
+        let selectedPlan = null; 
+
+        if (localStorage.getItem('planSelect')) {
+            selectedPlan = localStorage.getItem('planSelect');
         }
+        payload.price_id = selectedPlan;
+
 
 
         $.ajax({
