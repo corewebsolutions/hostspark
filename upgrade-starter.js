@@ -44,30 +44,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // User selects plan...
     $('[data="plan-button"]').on('click', function () {
-    // Get the value from the data-plan attribute
-    const selectedPlan = $(this).attr('data-plan');
-    $('[data="plan-button"]').text('One Moment...');
 
-    $.ajax({
-        url: baseURL + 'api:xAumndFJ/upgrade_starter_plan', 
-        type: 'POST',
-        headers: {
-        Authorization: "Bearer " + localStorage.authToken,
-        },
-        data: {
-            price_id: selectedPlan
-        },
-        success: function (response) {
+        
+        const selectedPlan = $(this).attr('data-plan'); // Get the value from the data-plan attribute
+        $(this).text('One Moment...');
 
-            window.location.href = response; // redirect to Stripe portal
+        $.ajax({ // fetch hosted checkout url
+            url: baseURL + 'api:xAumndFJ/upgrade_starter_plan', 
+            type: 'POST',
+            headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+            },
+            data: {
+                price_id: selectedPlan
+            },
+            success: function (response) {
 
-        },
-        error: function (xhr) {
-            const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
-            //showFormError(err);
-            $btn.prop('disabled', false).text('Connect Stripe');
-        }
-    });
+                window.location.href = response; // redirect to Stripe portal
+
+            },
+            error: function (xhr) {
+                const err = xhr.responseJSON?.message || 'Error initiating Stripe Connect.';
+                //showFormError(err);
+                $btn.prop('disabled', false).text('Connect Stripe');
+            }
+        });
 
     });
 
