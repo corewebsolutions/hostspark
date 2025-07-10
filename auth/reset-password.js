@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.user.avatar) {
           localStorage.setItem("avatar", response.user.avatar);
         }
-
+        initApp();
         localStorage.setItem("pageId","dashboard");
         window.location.href = "/app/dashboard";
 
