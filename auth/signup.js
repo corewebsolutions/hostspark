@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         url: baseURL + 'api:xAumndFJ/auth/signup',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ email, password, price_id }),
+        data: JSON.stringify({ email, password, }),
         success: function (response) {
 
             // hide signup form
