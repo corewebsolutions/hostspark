@@ -389,6 +389,7 @@ function loadUserAvatarSettings() {
 
 function authMe() {
 
+  showloader();
   $.ajax({
     url: baseURL + 'api:xAumndFJ/auth/me',
     type: 'GET',
@@ -409,6 +410,8 @@ function authMe() {
           $('.starter-upgrade-block').remove();
           $('.plan-counter').css('display','flex');
         }
+
+        hideLoader();
 
 
     },
