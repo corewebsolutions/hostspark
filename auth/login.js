@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
-            userLocalStorageSettings() 
+            userLocalStorageSettings(response);
             setLoadingState(false);
 
             if (response.user.industry == null) {

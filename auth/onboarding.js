@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data: JSON.stringify(payload),
             success: function (response) {
 
-                userLocalStorageSettings();
+                userLocalStorageSettings(response);
                 localStorage.setItem("planGroup",response.plan_group_id);
                 localStorage.setItem("onboarding", 'completed');
 

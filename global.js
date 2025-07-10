@@ -353,7 +353,7 @@ window.hideLoader = function () {
   $loader.hide();
 };
 
-function userLocalStorageSettings() {
+function userLocalStorageSettings(response) {
 
   localStorage.setItem("authToken", response.authToken);
   localStorage.setItem("authMode", "google");

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (response.authToken) { // if user is authenticated
             
-            userLocalStorageSettings();
+            userLocalStorageSettings(response);
 
             if (response.new_user == false && response.user.industry != null ) {
                 localStorage.setItem("pageId","dashboard");
