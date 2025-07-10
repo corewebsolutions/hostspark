@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         alert('Password reset successful!');
         setLoadingState(false);
+
+        localStorage.setItem("authToken", response.authToken);
         userLocalStorageSettings(response);
         localStorage.setItem("pageId","dashboard");
         window.location.href = "/app/dashboard";

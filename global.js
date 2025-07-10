@@ -24,7 +24,6 @@ function initApp() {
   logOutUser();
   ajaxErrorHandler();
   loadUserAvatarSettings();
-  //getUserIntegrationStatus();
 
 }
 
@@ -328,8 +327,6 @@ window.hideLoader = function () {
 
 function userLocalStorageSettings(response) {
 
-  localStorage.setItem("authToken", response.authToken);
-  localStorage.setItem("authMode", "google");
   localStorage.setItem("firstName", response.user.first_name);
   localStorage.setItem("lastName", response.user.last_name);
   localStorage.setItem("email", response.user.email);

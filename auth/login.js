@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
+            localStorage.setItem("authToken", response.authToken);
             userLocalStorageSettings(response);
             setLoadingState(false);
 

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (response.authToken) { // if user is authenticated
             
+            localStorage.setItem("authMode", "google");
             userLocalStorageSettings(response);
 
             if (response.new_user == false && response.user.industry != null ) {
