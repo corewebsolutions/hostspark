@@ -1,40 +1,38 @@
 // Store base URL Xano
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 
-document.addEventListener("DOMContentLoaded", function() {
+
+function authUser() {
 
   if (localStorage.authToken == null) {
     //run code if they are not logged in
     alert("You are not logged in");
     window.location.href = "/auth/login";
   } else {
-    authUser();
+
+    showLoader();
+
+    $.ajax({
+      url: baseURL + "api:xAumndFJ/auth/me",
+      type: "GET",
+      headers: {
+        'Content-Type': "application/json",
+        'Authorization': "Bearer " + localStorage.authToken
+      },
+      success: function (data) {
+        initApp();
+      },
+      complete: function(){
+        hideLoader();
+      },
+      error: function (error) {
+        window.location.href = "/auth/login";
+      }
+    });
+
   }
 
-});
 
-function authUser() {
-
-  showLoader();
-
-  $.ajax({
-    url: baseURL + "api:xAumndFJ/auth/me",
-    type: "GET",
-    headers: {
-      'Content-Type': "application/json",
-      'Authorization': "Bearer " + localStorage.authToken
-    },
-    success: function (data) {
-
-      initApp();
-    },
-    complete: function(){
-      hideLoader();
-    },
-    error: function (error) {
-      window.location.href = "/auth/login";
-    }
-  });
 
 }
 
