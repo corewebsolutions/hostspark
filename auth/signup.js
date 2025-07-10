@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         setLoadingState(true, this);
-        
-        if(!localStorage.getItem('planSelect')){
-            const plan = null
-        } else {
-            const plan = localStorage.getItem('planSelect');
+
+        let plan = null; // Declare the variable outside the blocks
+
+        if (localStorage.getItem('planSelect')) {
+            plan = localStorage.getItem('planSelect');
         }
 
         const email = $('#signup-email').val().trim();
