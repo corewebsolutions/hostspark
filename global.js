@@ -372,6 +372,7 @@ function loadUserAvatarSettings() {
     $('.starter-upgrade-block').show();
   } else {
     $('.starter-upgrade-block').remove();
+    alert(' NOT WORKING!!!');
   }
   
 }
