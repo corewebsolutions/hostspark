@@ -2,6 +2,7 @@
 let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
 let loaderAnimation = null;
 
+
 function authUser() {
 
   if (localStorage.authToken == null) {
@@ -26,7 +27,7 @@ function initApp() {
       renderer: 'svg',
       loop: true,
       autoplay: false,
-      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6867f2086ff491eedcbcf424_0JfhGEDAD5.json' // replace with your actual file path
+      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6867f12bc38700268644cc0d_CJZvSvTLch.json' // replace with your actual file path
     });
   }
 
