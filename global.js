@@ -403,8 +403,11 @@ function authMe() {
 
         if (response.group_id == 0) {
           $('.starter-upgrade-block').show();
+          $('.plan-counter').remove();
+
         } else {
           $('.starter-upgrade-block').remove();
+          $('.plan-counter').show();
         }
 
 
