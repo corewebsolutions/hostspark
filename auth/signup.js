@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+
     
     const $form = $('#signup-form'); // Add this line to define $form
 
@@ -7,12 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         e.preventDefault();
 
-        // Flag this form as active
         setLoadingState(true, this);
+        
+        if(!localStorage.getItem('planSelect')){
+            const plan = null
+        } else {
+            const plan = localStorage.getItem('planSelect');
+        }
 
         const email = $('#signup-email').val().trim();
         const password = $('#signup-password').val().trim();
-        const plan = localStorage.getItem('planSelect');
+        
 
         if (!email || !password) {
         showFormError('Email and password are required.');
