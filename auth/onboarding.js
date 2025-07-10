@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       !localStorage.getItem('planSelect') || 
-      localStorage.getItem('planSelect') !== 'price_1RiK1wPAlNurIsgyBfN20Moy'
+      localStorage.getItem('planSelect') == 'price_1RiK1wPAlNurIsgyBfN20Moy'
     ) {
       
       // Update visible text
-      $btn.find('.btn-text').text('Continue to Payment');
+      $btn.find('.btn-text').text('Continue to Dashboard');
 
       // Update loading text attribute
       $btn.attr('data-loading-text', 'One Moment...');
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
 
       // Update visible text
-      $btn.find('.btn-text').text('Continue to Dashboard');
+      $btn.find('.btn-text').text('Continue to Payment');
       $btn.attr('data-loading-text', 'One Moment...');
 
     }
