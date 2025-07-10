@@ -8,38 +8,38 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     $.ajax({
-    url:  baseURL + "api:xAumndFJ/google_auth",
-    type: "POST",
-    data: {
-      code: code,
-      plan: localStorage.getItem('planSelect')
-    },
-    success: function (response) {
+      url:  baseURL + "api:xAumndFJ/google_auth",
+      type: "POST",
+      data: {
+        code: code,
+        plan: localStorage.getItem('planSelect')
+      },
+      success: function (response) {
 
-        if (response.authToken) { // if user is authenticated
-          localStorage.setItem("authToken", response.authToken);
-          localStorage.setItem("authMode", "google");
-          localStorage.setItem("firstName", response.user.first_name);
-          localStorage.setItem("lastName", response.user.last_name);
-          localStorage.setItem("email", response.user.email);
-          localStorage.setItem("avatar", response.user.avatar);
+          if (response.authToken) { // if user is authenticated
+            localStorage.setItem("authToken", response.authToken);
+            localStorage.setItem("authMode", "google");
+            localStorage.setItem("firstName", response.user.first_name);
+            localStorage.setItem("lastName", response.user.last_name);
+            localStorage.setItem("email", response.user.email);
+            localStorage.setItem("avatar", response.user.avatar);
 
-          if (response.new_user == false && response.user.industry != null ) {
-              localStorage.setItem("pageId","dashboard");
-              window.location.href = "/app/dashboard"; 
+            if (response.new_user == false && response.user.industry != null ) {
+                localStorage.setItem("pageId","dashboard");
+                window.location.href = "/app/dashboard"; 
+            } else {
+                window.location.href = "/auth/onboarding"; 
+            }
+            
           } else {
-              window.location.href = "/auth/onboarding"; 
+            alert("Login failed. Please try again.");
           }
-          
-        } else {
-          alert("Login failed. Please try again.");
-        }
 
-    },
-      error: function (xhr, status, error) {
+      },
+        error: function (xhr, status, error) {
 
-        console.error("OAuth Error:", error);
-        alert("Something went wrong during login.")
+          console.error("OAuth Error:", error);
+          alert("Something went wrong during login.")
 
       }
   	});
