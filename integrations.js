@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    $('#integrations').on('click', function () { //load integrations on tab click
+        getUserIntegrationStatus();
+    });
+    
     // Connect Stripe Account
     $('[data-api-button="stripe-connect"]').on('click', function () {
 
