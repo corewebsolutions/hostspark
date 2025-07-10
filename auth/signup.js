@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setLoadingState(true, this);
 
-        let plan = null; // Declare the variable outside the blocks
+        let price_id = null; // Declare the variable outside the blocks
 
         if (localStorage.getItem('planSelect')) {
-            plan = localStorage.getItem('planSelect');
+            price_id = localStorage.getItem('planSelect');
         }
 
         const email = $('#signup-email').val().trim();
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         url: baseURL + 'api:xAumndFJ/auth/signup',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ email, password, plan }),
+        data: JSON.stringify({ email, password, price_id }),
         success: function (response) {
 
             // hide signup form
