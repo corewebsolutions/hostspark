@@ -18,6 +18,7 @@ function authUser() {
 
 function initApp() {
 
+  authMe();
   urlRouting();
   loadCurrentPage();
   dropDownNavigation();
@@ -373,3 +374,32 @@ function loadUserAvatarSettings() {
   
 }
 
+function authMe() {
+
+  $.ajax({
+
+  url: baseURL + 'api:xAumndFJ/auth/me',
+  type: 'POST',
+  contentType: 'application/json',
+  data: JSON.stringify({ email, password }),
+  success: function (response) {
+
+      localStorage.setItem('planId', response.price_id);
+      localStorage.setItem('planGroup', response.group_id);
+
+      if (response.group_id == 0) {
+        $('.starter-upgrade-block').show();
+      } else {
+        $('.starter-upgrade-block').remove();
+      }
+
+
+  },
+  error: function (xhr) {
+      const err = xhr.responseJSON?.message || 'Login failed. Please try again.';
+      showFormError(err);
+      setLoadingState(false);
+  }
+  });
+
+}
