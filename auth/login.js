@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    localStorage.removeItem('planSelect');
     const $loginForm = $('#login-form'); // login form
 
     //Login form submitted...
