@@ -9,27 +9,7 @@ function authUser() {
     alert("You are not logged in");
     window.location.href = "/auth/login";
   } else {
-
-    showLoader();
-
-    $.ajax({
-      url: baseURL + "api:xAumndFJ/auth/me",
-      type: "GET",
-      headers: {
-        'Content-Type': "application/json",
-        'Authorization': "Bearer " + localStorage.authToken
-      },
-      success: function (data) {
-        initApp();
-      },
-      complete: function(){
-        hideLoader();
-      },
-      error: function (error) {
-        window.location.href = "/auth/login";
-      }
-    });
-
+    initApp();
   }
 
 
@@ -38,8 +18,6 @@ function authUser() {
 
 function initApp() {
 
-  alert('INIT FIRED');
-  
   $('#tester').on('click', function () {
     showToast('success','This is a test!')
   });
