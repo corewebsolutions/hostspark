@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data="plan-button"]').on('click', function () {
     // Get the value from the data-plan attribute
     const selectedPlan = $(this).attr('data-plan');
+    $('[data="plan-button"]').text('One Moment...');
 
     $.ajax({
         url: baseURL + 'api:xAumndFJ/upgrade_starter_plan', 
