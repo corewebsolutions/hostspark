@@ -24,7 +24,7 @@ function initApp() {
   logOutUser();
   ajaxErrorHandler();
   loadUserAvatarSettings();
-  getUserIntegrationStatus();
+  //getUserIntegrationStatus();
 
 }
 
