@@ -402,12 +402,12 @@ function authMe() {
         localStorage.setItem('planGroup', response.group_id);
 
         if (response.group_id == 0) {
-          $('.starter-upgrade-block').show();
+          $('.starter-upgrade-block').css('display','flex');
           $('.plan-counter').remove();
 
         } else {
           $('.starter-upgrade-block').remove();
-          $('.plan-counter').show();
+          $('.plan-counter').css('display','flex');
         }
 
 
