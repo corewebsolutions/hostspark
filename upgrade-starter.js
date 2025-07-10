@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             success: function (response) {
 
-                window.location.href = response; // redirect to Stripe portal
+                localStorage.setItem('planId',response.plan_id);
+                window.location.href = response.url; // redirect to Stripe portal
 
             },
             error: function (xhr) {
