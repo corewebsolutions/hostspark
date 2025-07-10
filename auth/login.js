@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("avatar", response.user.avatar);
             }
 
-            initApp();
             setLoadingState(false);
 
             if (response.user.industry == null) {
