@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // set local storage
             localStorage.setItem("authMode", "manual");
             localStorage.setItem("authToken", response.authToken);
+            initApp();
 
             // Redirect with query param
             window.location.href = "/auth/onboarding";
