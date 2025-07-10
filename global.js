@@ -368,11 +368,9 @@ function loadUserAvatarSettings() {
 
   // show upgrade pro tools block - bottom left
   if (localStorage.getItem('planId') == 'e15f9227-0254-4b70-8401-ba31cd9cd911') {
-    alert('WORKING!!!');
     $('.starter-upgrade-block').show();
   } else {
     $('.starter-upgrade-block').remove();
-    alert(' NOT WORKING!!!');
   }
   
 }
