@@ -389,7 +389,7 @@ function loadUserAvatarSettings() {
 
 function authMe() {
 
-  showloader();
+  showLoader();
   $.ajax({
     url: baseURL + 'api:xAumndFJ/auth/me',
     type: 'GET',
