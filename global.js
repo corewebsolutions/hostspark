@@ -317,13 +317,11 @@ function dropDownNavigation() {
 
 // Global Loader Control
 window.showLoader = function () {
-  const $loader = $('.loader');
-  $loader.css('display','flex');
+  $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
 };
 
 window.hideLoader = function () {
-  const $loader = $('.loader');
-  $loader.hide();
+  $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
 };
 
 function userLocalStorageSettings(response) {
