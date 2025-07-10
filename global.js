@@ -378,7 +378,7 @@ function authMe() {
 
   $.ajax({
     url: baseURL + 'api:xAumndFJ/auth/me',
-    type: 'POST',
+    type: 'GET',
     contentType: 'application/json',
       headers: {
       Authorization: "Bearer " + localStorage.authToken,
