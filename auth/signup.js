@@ -1,0 +1,50 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+    //Signup form submitted...
+    $form.on('submit', function (e) {
+
+        e.preventDefault();
+
+        // Flag this form as active
+        setLoadingState(true, this);
+
+        const email = $('#signup-email').val().trim();
+        const password = $('#signup-password').val().trim();
+        const plan = localStorage.getItem('planSelect');
+
+        if (!email || !password) {
+        showFormError('Email and password are required.');
+        setLoadingState(false);
+        return;
+        }
+
+        $.ajax({
+        url: baseURL + 'api:xAumndFJ/auth/signup',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password, plan }),
+        success: function (response) {
+
+            // hide signup form
+            $('#sign-up-block').hide();
+
+            // set local storage
+            localStorage.setItem("authMode", "manual");
+            localStorage.setItem("authToken", response.authToken);
+
+            // Redirect with query param
+            window.location.href = "/auth/onboarding";
+
+            setLoadingState(false);
+
+        },
+        error: function (xhr) {
+            const err = xhr.responseJSON?.message || 'Signup failed. Please try again.';
+            showFormError(err);
+            setLoadingState(false);
+        }
+        });
+
+    });
+
+});
