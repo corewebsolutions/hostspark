@@ -38,6 +38,8 @@ function authUser() {
 
 function initApp() {
 
+  alert('INIT FIRED');
+  
   $('#tester').on('click', function () {
     showToast('success','This is a test!')
   });
