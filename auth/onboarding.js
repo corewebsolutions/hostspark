@@ -78,14 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
             data: JSON.stringify(payload),
             success: function (response) {
 
-                localStorage.setItem("firstName", response.user.first_name);
-                localStorage.setItem("onboarding", 'completed');
-                localStorage.setItem("lastName", response.user.last_name);
-                localStorage.setItem("email", response.user.email);
+                userLocalStorageSettings();
                 localStorage.setItem("planGroup",response.plan_group_id);
-                if (response.avatar) {
-                localStorage.setItem("avatar", response.user.avatar);
-                }
+                localStorage.setItem("onboarding", 'completed');
 
                 if (response.plan_group_id == 0) { // if starter plan, redirect user to dashboard
                     localStorage.setItem('pageId','dashboard');

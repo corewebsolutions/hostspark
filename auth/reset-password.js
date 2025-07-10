@@ -41,15 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         alert('Password reset successful!');
         setLoadingState(false);
-
-        localStorage.setItem("authToken", response.authToken);
-        localStorage.setItem("firstName", response.user.first_name);
-        localStorage.setItem("lastName", response.user.last_name);
-        localStorage.setItem("email", response.user.email);
-        if (response.user.avatar) {
-          localStorage.setItem("avatar", response.user.avatar);
-        }
-        initApp();
+        userLocalStorageSettings();
         localStorage.setItem("pageId","dashboard");
         window.location.href = "/app/dashboard";
 

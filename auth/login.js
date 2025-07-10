@@ -28,15 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data: JSON.stringify({ email, password }),
         success: function (response) {
 
-            localStorage.setItem("authToken", response.authToken);
-            localStorage.setItem("authMode", response.user.auth_mode);
-            localStorage.setItem("firstName", response.user.first_name);
-            localStorage.setItem("lastName", response.user.last_name);
-            localStorage.setItem("email", response.user.email);
-            if (response.user.avatar){
-                localStorage.setItem("avatar", response.user.avatar);
-            }
-
+            userLocalStorageSettings() 
             setLoadingState(false);
 
             if (response.user.industry == null) {
@@ -45,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = "/app/dashboard";
                 localStorage.setItem("pageId","dashboard");
             }
-
 
         },
         error: function (xhr) {

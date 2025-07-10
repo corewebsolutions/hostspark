@@ -18,20 +18,11 @@ function authUser() {
 
 function initApp() {
 
-  $('#tester').on('click', function () {
-    showToast('success','This is a test!')
-  });
-
-  $('#tester-error').on('click', function () {
-    showToast('error','This is a test!')
-  });
-  
   urlRouting();
   loadCurrentPage();
   dropDownNavigation();
   logOutUser();
   ajaxErrorHandler();
-  loadUserAvatar();
 
 }
 
@@ -323,7 +314,7 @@ function dropDownNavigation() {
 }
 
 // Load User Avatar/Info
-function loadUserAvatar() {
+function loadUserAvatarSettings() {
 
   const firstName = localStorage.getItem('firstName') || '';
   const lastName = localStorage.getItem('lastName') || '';
@@ -362,3 +353,16 @@ window.hideLoader = function () {
   $loader.hide();
 };
 
+function userLocalStorageSettings() {
+
+  localStorage.setItem("authToken", response.authToken);
+  localStorage.setItem("authMode", "google");
+  localStorage.setItem("firstName", response.user.first_name);
+  localStorage.setItem("lastName", response.user.last_name);
+  localStorage.setItem("email", response.user.email);
+  localStorage.setItem("planId", response.user.stripe_plan_id);
+  if (response.user.avatar){
+  localStorage.setItem("avatar", response.user.avatar);
+  }
+
+}

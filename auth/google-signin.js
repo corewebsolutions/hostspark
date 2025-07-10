@@ -18,13 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
       success: function (response) {
 
           if (response.authToken) { // if user is authenticated
-
-            localStorage.setItem("authToken", response.authToken);
-            localStorage.setItem("authMode", "google");
-            localStorage.setItem("firstName", response.user.first_name);
-            localStorage.setItem("lastName", response.user.last_name);
-            localStorage.setItem("email", response.user.email);
-            localStorage.setItem("avatar", response.user.avatar);
+            
+            userLocalStorageSettings();
 
             if (response.new_user == false && response.user.industry != null ) {
                 localStorage.setItem("pageId","dashboard");
