@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "/auth/login";
     }
 
+    const $btn = $('[data-button="payment-button"]');
+
     if (
       !localStorage.getItem('planSelect') || 
       localStorage.getItem('planSelect') !== 'price_1RiK1wPAlNurIsgyBfN20Moy'
     ) {
-
-      const $btn = $('[data-button="payment-button"]');
       
       // Update visible text
       $btn.find('.btn-text').text('Continue to Payment');
@@ -31,10 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
       $btn.attr('data-loading-text', 'One Moment...');
 
     } else {
+
       // Update visible text
       $btn.find('.btn-text').text('Continue to Dashboard');
       $btn.attr('data-loading-text', 'One Moment...');
+
     }
+    
 
     if (localStorage.getItem("onboarding")) {
         localStorage.setItem('pageId','dashboard');
