@@ -348,11 +348,11 @@ function loadUserAvatarSettings() {
 
   const fullName = `${firstName} ${lastName}`.trim();
 
-  // 1. Update full name in all elements with data=user_name
+  //  Update full name in all elements with data=user_name
   $('[data=user_name]').text(fullName);
   $('[data=first_name]').text(firstName);
 
-  // 2. Handle avatar display
+  //  Handle avatar display
   const $avatarImg = $('[data=avatar]');
   const $avatarFallback = $('[data=avatar-fallback]');
 
@@ -364,6 +364,13 @@ function loadUserAvatarSettings() {
     const initials =
       (firstName.charAt(0) || '') + (lastName.charAt(0) || '');
     $avatarFallback.text(initials.toUpperCase()).css('display', 'flex');
+  }
+
+  // show upgrade pro tools block - bottom left
+  if (localStorage.getItem('planId') === 'e15f9227-0254-4b70-8401-ba31cd9cd911') {
+    $('.starter-upgrade-block').show();
+  } else {
+    $('.starter-upgrade-block').remove();
   }
   
 }
