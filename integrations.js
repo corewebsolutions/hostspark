@@ -86,6 +86,7 @@ function getUserIntegrationStatus() {
                 $('[data="stripe-connected"]').show();
                 $('[data-action-req="stripe"]').hide();
                 $('[data-not-connected="stripe"]').hide();
+                $('.integration-button.stripe').text('Update Integration');
             }
 
             // zoom
