@@ -18,34 +18,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function updateStepNumberActiveState() {
-  // Get all steps in order
   const $steps = $('.app-vertical-tabs__button');
   let activeIndex = -1;
 
-  // First, find the current active step index
+  // Find the current step index
   $steps.each(function (index) {
     if ($(this).hasClass('w--current')) {
       activeIndex = index;
     }
   });
 
-  // Now update each step based on position
+  // Loop through steps and apply classes
   $steps.each(function (index) {
     const $step = $(this);
     const $number = $step.find('.step-number');
     const $line = $step.find('.app-vertical-tabs__process-line');
 
-    // Reset all classes first
+    // Reset first
     $number.removeClass('active');
     $line.removeClass('active');
 
-    if (index < activeIndex) {
-      // Previous step – fill line
-      $line.addClass('active');
-    } else if (index === activeIndex) {
-      // Current step – highlight number
+    if (index <= activeIndex) {
+      // Active or previous step: highlight both number and line
       $number.addClass('active');
     }
-    // Future steps remain inactive
+
+    if (index < activeIndex) {
+      // Only previous steps get the line filled
+      $line.addClass('active');
+    }
   });
 }
