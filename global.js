@@ -437,12 +437,12 @@ function authMe() {
 
         hideLoader();
 
-
     },
     error: function (xhr) {
         const err = xhr.responseJSON?.message || 'Login failed. Please try again.';
-        showFormError(err);
         setLoadingState(false);
+        localStorage.clear();
+        window.location.href = "/auth/login";
     }
   });
 
