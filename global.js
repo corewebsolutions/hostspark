@@ -433,40 +433,21 @@ function authMe() {
 }
 
 // generate 15 min increment time options for form fields
-function generateTimeOptions(dropdownEl, includeMidnightTwice = false) {
+function generateTimeOptions(dropdownEl) {
   const formatTime = (h, m) => {
     const h12 = h % 12 || 12;
     const ampm = h < 12 ? 'AM' : 'PM';
     return `${h12}:${m.toString().padStart(2, '0')} ${ampm}`;
   };
 
-  // Inject 12:00 PM first
-  const noonOption = document.createElement('div');
-  noonOption.className = 'dropdown-option';
-  noonOption.setAttribute('data-value', '12:00');
-  noonOption.textContent = '12:00 PM';
-  dropdownEl.appendChild(noonOption);
-
-  // Loop through all time slots except 12:00
   for (let h = 0; h < 24; h++) {
     for (let m = 0; m < 60; m += 15) {
       const value = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-      if (value === '12:00') continue; // skip, already added
-
       const option = document.createElement('div');
       option.className = 'dropdown-option';
       option.setAttribute('data-value', value);
       option.textContent = formatTime(h, m);
-
       dropdownEl.appendChild(option);
     }
-  }
-
-  if (includeMidnightTwice) {
-    const midnight = document.createElement('div');
-    midnight.className = 'dropdown-option';
-    midnight.setAttribute('data-value', '00:00');
-    midnight.textContent = '12:00 AM';
-    dropdownEl.appendChild(midnight);
   }
 }
