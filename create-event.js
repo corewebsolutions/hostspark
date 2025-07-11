@@ -1,30 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    $('#create-event').on('click', function () { // click handler for step nav
+        $("#event-details-nav-button").click();
+    });
 
-  $('#create-event').on('click', function () { // click handler for step nav
-    $("#event-details-nav-button").click();
-  });
+    updateStepNumberActiveState();
 
-  updateStepNumberActiveState(); // initiate step navigation
-
-  $('.app-vertical-tabs__button').on('click', function () { // click handler for step nav
+    // Re-run after a delay when tab changes
+    $('.app-vertical-tabs__button').on('click', function () {
     setTimeout(() => {
-      updateStepNumberActiveState();
-    }, 50);
-  });
-
+        updateStepNumberActiveState();
+    }, 50); // Wait for Webflow to apply `w--current`
+    });
 
 
 });
 
 
-
-// Nav Steps Functionality
 function updateStepNumberActiveState() {
-    $('.step-number').removeClass('active');
-    $('.app-vertical-tabs__process-line').removeClass('active');
-    $('.app-vertical-tabs__button.w--current').each(function () {
-      $(this).find('.step-number').addClass('active');
-      $(this).find('.app-vertical-tabs__process-line').addClass('active');
-    });
+  // Get all steps in order
+  const $steps = $('.app-vertical-tabs__button');
+  let activeIndex = -1;
+
+  // First, find the current active step index
+  $steps.each(function (index) {
+    if ($(this).hasClass('w--current')) {
+      activeIndex = index;
+    }
+  });
+
+  // Now update each step based on position
+  $steps.each(function (index) {
+    const $step = $(this);
+    const $number = $step.find('.step-number');
+    const $line = $step.find('.app-vertical-tabs__process-line');
+
+    // Reset all classes first
+    $number.removeClass('active');
+    $line.removeClass('active');
+
+    if (index < activeIndex) {
+      // Previous step – fill line
+      $line.addClass('active');
+    } else if (index === activeIndex) {
+      // Current step – highlight number
+      $number.addClass('active');
+    }
+    // Future steps remain inactive
+  });
 }
