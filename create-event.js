@@ -34,13 +34,14 @@ function updateStepNumberActiveState() {
     const line = step.querySelector('.app-vertical-tabs__process-line');
     const text = step.querySelector('.step-text');
 
+    // Reset first
     if (number) number.classList.remove('active');
     if (line) line.classList.remove('active');
     if (text) text.classList.remove('active');
 
     if (index <= activeIndex) {
       if (number) number.classList.add('active');
-      if (text) text.classList.add('active');
+      if (text) text.classList.add('active');  
     }
 
     if (index < activeIndex && line) {
