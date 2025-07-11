@@ -24,6 +24,22 @@ function initApp() {
     generateTimeOptions(dropdown, true);
   });
 
+  // Auto-select user's time zone if it matches
+  const detectedTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  document.querySelectorAll('.custom-dropdown[data-key="timezone"]').forEach(dropdown => {
+    const selected = dropdown.querySelector('.dropdown-selected');
+    const input = dropdown.querySelector('.dropdown-hidden-input');
+    const options = dropdown.querySelectorAll('.dropdown-option');
+
+    options.forEach(option => {
+      if (option.getAttribute('data-value') === detectedTimeZone) {
+        selected.textContent = option.textContent;
+        if (input) input.value = detectedTimeZone;
+      }
+    });
+  });
+
   // handle lottie loader
   const container = document.getElementById('lottie-loader');
 
@@ -451,3 +467,4 @@ function generateTimeOptions(dropdownEl) {
     }
   }
 }
+
