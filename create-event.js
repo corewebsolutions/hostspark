@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+  $('#create-event').on('click', function () { // click handler for step nav
+    $("#event-details-nav-button").click();
+  });
+
   updateStepNumberActiveState(); // initiate step navigation
 
   $('.app-vertical-tabs__button').on('click', function () { // click handler for step nav
@@ -7,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       updateStepNumberActiveState();
     }, 50);
   });
+
 
 
 });
