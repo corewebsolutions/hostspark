@@ -18,34 +18,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function updateStepNumberActiveState() {
-  const $steps = $('.app-vertical-tabs__button');
+  const $steps = document.querySelectorAll('.app-vertical-tabs__button');
   let activeIndex = -1;
 
   // Find the current step index
-  $steps.each(function (index) {
-    if ($(this).hasClass('w--current')) {
+  $steps.forEach((step, index) => {
+    if (step.classList.contains('w--current')) {
       activeIndex = index;
     }
   });
 
-  // Loop through steps and apply classes
-  $steps.each(function (index) {
-    const $step = $(this);
-    const $number = $step.find('.step-number');
-    const $line = $step.find('.app-vertical-tabs__process-line');
+  // Loop and apply classes
+  $steps.forEach((step, index) => {
+    const number = step.querySelector('.step-number');
+    const line = step.querySelector('.app-vertical-tabs__process-line');
+    const text = step.querySelector('.step-text');
 
-    // Reset first
-    $number.removeClass('active');
-    $line.removeClass('active');
+    if (number) number.classList.remove('active');
+    if (line) line.classList.remove('active');
+    if (text) text.classList.remove('active');
 
     if (index <= activeIndex) {
-      // Active or previous step: highlight both number and line
-      $number.addClass('active');
+      if (number) number.classList.add('active');
+      if (text) text.classList.add('active');
     }
 
-    if (index < activeIndex) {
-      // Only previous steps get the line filled
-      $line.addClass('active');
+    if (index < activeIndex && line) {
+      line.classList.add('active');
     }
   });
 }
