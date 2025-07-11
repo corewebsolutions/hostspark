@@ -19,6 +19,12 @@ function authUser() {
 
 function initApp() {
 
+  // load time options in forms
+  document.querySelectorAll('.dropdown-options[data-type="time"]').forEach(dropdown => {
+    generateTimeOptions(dropdown, true);
+  });
+
+  // handle lottie loader
   const container = document.getElementById('lottie-loader');
 
   if (container) {
@@ -424,5 +430,38 @@ function authMe() {
     }
   });
 
+}
+
+// generate 15 min increment time options for form fields
+function generateTimeOptions(dropdownEl, includeMidnightTwice = false) {
+  const formatTime = (hours, minutes) => {
+    const h12 = hours % 12 || 12;
+    const ampm = hours < 12 || hours === 24 ? 'AM' : 'PM';
+    const mm = minutes.toString().padStart(2, '0');
+    return `${h12}:${mm} ${ampm}`;
+  };
+
+  for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m += 15) {
+      const value = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+      const label = formatTime(h, m);
+
+      const option = document.createElement('div');
+      option.className = 'dropdown-option';
+      option.setAttribute('data-value', value);
+      option.textContent = label;
+
+      dropdownEl.appendChild(option);
+    }
+  }
+
+  if (includeMidnightTwice) {
+    // Add 12:00 AM again to mark the end of a full cycle
+    const midnight = document.createElement('div');
+    midnight.className = 'dropdown-option';
+    midnight.setAttribute('data-value', '00:00');
+    midnight.textContent = '12:00 AM';
+    dropdownEl.appendChild(midnight);
+  }
 }
 
