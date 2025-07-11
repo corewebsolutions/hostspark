@@ -18,33 +18,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function updateStepNumberActiveState() {
-  const steps = document.querySelectorAll('.app-vertical-tabs__button');
+  const $steps = document.querySelectorAll('.app-vertical-tabs__button');
   let activeIndex = -1;
 
-  steps.forEach((step, index) => {
+  // Find the current step index
+  $steps.forEach((step, index) => {
     if (step.classList.contains('w--current')) {
       activeIndex = index;
     }
   });
 
-  steps.forEach((step, index) => {
-    const wrapper = step.querySelector('.step-text'); // outer wrapper
-    const number = wrapper?.querySelector('.step-number');
-    const label = wrapper?.querySelectorAll('.step-text')[1]; // second .step-text inside
+  // Loop and apply classes
+  $steps.forEach((step, index) => {
+    const number = step.querySelector('.step-number');
     const line = step.querySelector('.app-vertical-tabs__process-line');
+    const text = step.querySelector('.step-title');
 
-    // Reset
-    number?.classList.remove('active');
-    label?.classList.remove('active');
-    line?.classList.remove('active');
+    // Reset first
+    if (number) number.classList.remove('active');
+    if (line) line.classList.remove('active');
+    if (text) text.classList.remove('active');
 
     if (index <= activeIndex) {
-      number?.classList.add('active');
-      label?.classList.add('active');
+      if (number) number.classList.add('active');
+      if (text) text.classList.add('active'); 
     }
 
-    if (index < activeIndex) {
-      line?.classList.add('active');
+    if (index < activeIndex && line) {
+      line.classList.add('active');
     }
   });
 }
