@@ -52,7 +52,7 @@ function initApp() {
       path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871c893e2e877525709732f_lottieflow-loading-07-eb6534-easey.json' 
     });
       // Speed up the animation
-      loaderAnimation.setSpeed(2.5);
+      loaderAnimation.setSpeed(2);
   }
 
   authMe();
@@ -381,7 +381,7 @@ window.hideLoader = function () {
         loaderAnimation.stop();
       }
     }, 550); // Just after fadeOut completes (500ms)
-  }, 500); // ← initial delay before hiding loader starts
+  }, 750); // ← initial delay before hiding loader starts
 };
 
 
