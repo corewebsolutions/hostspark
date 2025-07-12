@@ -220,28 +220,25 @@ function urlRouting() {
  
 // Load Current Page
 function loadCurrentPage() {
+  
+  let currentPage = localStorage.getItem("pageId") || "dashboard"; // fallback to 'dashboard'
 
-  /* This function loads the correct screen if the user refreshes a page */
-  let currentPage = localStorage.getItem("pageId");
   setTimeout(() => {
-    $("#" + currentPage).click(); // open tab of page id
-    history.pushState(currentPage, null, "/app/" + currentPage); // log history and update url
+    $("#" + currentPage).click(); // trigger tab click
+    history.pushState(currentPage, null, "/app/" + currentPage); // update URL
 
-    // Check if the currentPage is "profile," "property," or "unit"
     if (["event", "ticket", "attendee"].includes(currentPage)) {
-      // Get the value from local storage
       let pageRefreshParam = localStorage.getItem("pageRefreshParam");
 
-      // Add the URL parameter to the history
-      history.pushState(
-        currentPage,
-        null,
-        "/app/" + currentPage + "?id=" + pageRefreshParam
-      );
+      if (pageRefreshParam) {
+        history.pushState(
+          currentPage,
+          null,
+          "/app/" + currentPage + "?id=" + pageRefreshParam
+        );
+      }
     }
   }, 100);
-
-
 }
 
 // Logout Functionality
