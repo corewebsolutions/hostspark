@@ -353,52 +353,28 @@ function dropDownNavigation() {
 }
 
 window.showLoader = function () {
-  // Fade out the content over 600ms
-  $('.primary-content').stop(true, true).animate(
-    { opacity: 0 },
-    {
-      complete: function () {
-        $('.primary-content').css('display', 'none'); // hide fully
 
-        // Show the loader and play animation
-        $('#global-loader').css({ display: 'flex', opacity: 0 }).animate(
-          { opacity: 1 },
-          {
-            complete: function () {
-              if (typeof loaderAnimation?.play === 'function') {
-                loaderAnimation.play();
-              }
-            }
-          }
-        );
-      }
+  $('.primary-content').fadeOut(500, 'swing');
+  
+  setTimeout(() => {
+    $('#global-loader').fadeIn(600, 'swing');
+    if (typeof loaderAnimation?.play === 'function') {
+      loaderAnimation.play();
     }
-  );
+  }, 200); // overlap by starting loader fade in after 200ms
 };
 
 window.hideLoader = function () {
+  // Fade out loader
+  $('#global-loader').fadeOut(500, 'swing');
+
+  // Start content fade in shortly after for overlapping effect
   setTimeout(() => {
     if (typeof loaderAnimation?.stop === 'function') {
       loaderAnimation.stop();
     }
-
-    // Fade out loader
-    $('#global-loader').stop(true, true).animate(
-      { opacity: 0 },
-      {
-        complete: function () {
-          $('#global-loader').css('display', 'none');
-
-          // Fade content back in
-          $('.primary-content').css({ display: 'block', opacity: 0 }).animate(
-            { opacity: 1 },
-            {
-            }
-          );
-        }
-      }
-    );
-  }, 500); // delay to show loader animation longer
+    $('.primary-content').fadeIn(600, 'swing');
+  }, 200);
 };
 
 
