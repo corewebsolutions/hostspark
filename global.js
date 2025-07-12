@@ -390,7 +390,7 @@ window.hideLoader = function () {
     $('#global-loader').stop(true, true).animate(
       { opacity: 0 },
       {
-        duration: 800,
+        duration: 400,
         easing: 'swing',
         complete: function () {
           $('#global-loader').css('display', 'none');
@@ -399,14 +399,14 @@ window.hideLoader = function () {
           $('.primary-content').css({ display: 'block', opacity: 0 }).animate(
             { opacity: 1 },
             {
-              duration: 800,
+              duration: 1200,
               easing: 'swing'
             }
           );
         }
       }
     );
-  }, 1000); // delay to show loader animation longer
+  }, 400); // delay to show loader animation longer
 };
 
 
