@@ -363,7 +363,7 @@ window.showLoader = function () {
     if (typeof loaderAnimation?.play === 'function') {
       loaderAnimation.play();
     }
-  }, 400); // Match CSS transition time
+  }, 2000); 
 };
 
 window.hideLoader = function () {
