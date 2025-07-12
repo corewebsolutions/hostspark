@@ -353,7 +353,7 @@ function dropDownNavigation() {
 // Global Loader Control
 window.showLoader = function () {
   // Fade out the app content first
-  $('.primary-tabs-wrapper').fadeOut(200, function () {
+  $('.primary-content').fadeOut(200, function () {
     // Then show the loader
     $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
     if (loaderAnimation) loaderAnimation.play();
@@ -366,7 +366,7 @@ window.hideLoader = function () {
   if (loaderAnimation) loaderAnimation.stop();
 
   // Then fade the app back in
-  $('.primary-tabs-wrapper').fadeIn(300);
+  $('.primary-content').fadeIn(300);
 };
 
 function userLocalStorageSettings(response) {
