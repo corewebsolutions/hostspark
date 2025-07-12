@@ -375,9 +375,10 @@ window.hideLoader = function () {
 
     // Then fade content back in
     $('.primary-content').removeClass('fade-out');
-  }, 1500); // 👈 adjust this delay (ms) to match how long you want Lottie to show
+  }, 2000);
+};
 
-  
+
 function userLocalStorageSettings(response) {
 
   localStorage.setItem("firstName", response.user.first_name);
@@ -484,4 +485,3 @@ function generateTimeOptions(dropdownEl) {
     }
   }
 }
-
