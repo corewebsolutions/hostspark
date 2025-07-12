@@ -359,10 +359,14 @@ window.showLoader = function () {
 };
 
 window.hideLoader = function () {
+  // Start the fade-out immediately
+  $('#global-loader').removeClass('loader-visible');
+  if (loaderAnimation) loaderAnimation.stop();
+
+  // Wait for CSS transition to finish, then fully hide it
   setTimeout(() => {
-    $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
-    if (loaderAnimation) loaderAnimation.stop();
-  }, 200); // Delay before hiding loader
+    $('#global-loader').addClass('loader-hidden');
+  }, 300); // Match your CSS `transition: opacity 300ms ease`
 };
 
 function userLocalStorageSettings(response) {
