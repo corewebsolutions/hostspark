@@ -49,7 +49,7 @@ function initApp() {
       renderer: 'svg',
       loop: true,
       autoplay: false,
-      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6867f12bc38700268644cc0d_CJZvSvTLch.json' // replace with your actual file path
+      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871c893e2e877525709732f_lottieflow-loading-07-eb6534-easey.json' 
     });
   }
 
