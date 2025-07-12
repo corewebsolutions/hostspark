@@ -19,7 +19,7 @@ function authUser() {
 
 function initApp() {
 
-  // load time options in forms
+  // load time-select options in forms for event (start and end)
   document.querySelectorAll('.dropdown-options[data-type="time"]').forEach(dropdown => {
     generateTimeOptions(dropdown, true);
   });
@@ -354,28 +354,28 @@ function dropDownNavigation() {
 
 // Global Loader Control
 window.showLoader = function () {
-  // Fade out the primary content (reveals loader behind)
-  const $content = $('.primary-content');
-  $content.addClass('fade-out');
-
-  // Slight delay to let fade-out complete before playing loader
-  setTimeout(() => {
+  // Fade out the content
+  $('.primary-content').fadeOut(300, function () {
+    // After fade-out completes, show and play the loader
+    $('.loader-visible').fadeIn(300);
     if (typeof loaderAnimation?.play === 'function') {
       loaderAnimation.play();
     }
-  }, 100); 
+  });
 };
 
 window.hideLoader = function () {
-  // Stop the loader animation after a delay
+  // Stop the loader after delay
   setTimeout(() => {
     if (typeof loaderAnimation?.stop === 'function') {
       loaderAnimation.stop();
     }
 
-    // Then fade content back in
-    $('.primary-content').removeClass('fade-out');
-  }, 2000);
+    // Fade out loader, fade content back in
+    $('.loader-visible').fadeOut(300, function () {
+      $('.primary-content').fadeIn(300);
+    });
+  }, 2000); // adjust this delay if needed
 };
 
 
