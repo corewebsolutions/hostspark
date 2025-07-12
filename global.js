@@ -363,19 +363,21 @@ window.showLoader = function () {
     if (typeof loaderAnimation?.play === 'function') {
       loaderAnimation.play();
     }
-  }, 2000); 
+  }, 100); 
 };
 
 window.hideLoader = function () {
-  // Stop the loader animation
-  if (typeof loaderAnimation?.stop === 'function') {
-    loaderAnimation.stop();
-  }
+  // Stop the loader animation after a delay
+  setTimeout(() => {
+    if (typeof loaderAnimation?.stop === 'function') {
+      loaderAnimation.stop();
+    }
 
-  // Fade the content back in
-  $('.primary-content').removeClass('fade-out');
-};
+    // Then fade content back in
+    $('.primary-content').removeClass('fade-out');
+  }, 1500); // 👈 adjust this delay (ms) to match how long you want Lottie to show
 
+  
 function userLocalStorageSettings(response) {
 
   localStorage.setItem("firstName", response.user.first_name);
