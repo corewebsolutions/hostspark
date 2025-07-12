@@ -352,13 +352,17 @@ function dropDownNavigation() {
 
 // Global Loader Control
 window.showLoader = function () {
-  $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
-  if (loaderAnimation) loaderAnimation.play();
+  setTimeout(() => {
+    $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
+    if (loaderAnimation) loaderAnimation.play();
+  }, 200); // Delay before showing loader
 };
 
 window.hideLoader = function () {
-  $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
-  if (loaderAnimation) loaderAnimation.stop();
+  setTimeout(() => {
+    $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
+    if (loaderAnimation) loaderAnimation.stop();
+  }, 200); // Delay before hiding loader
 };
 
 function userLocalStorageSettings(response) {
