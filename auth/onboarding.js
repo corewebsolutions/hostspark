@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let baseURL = "https://xukl-cktx-zcsb.n7e.xano.io/";
-
     // check for redirected users after sign up for additional questions...
     if (localStorage.getItem("authToken")) { 
         $('#sign-up-block').hide(); // hide signup form
