@@ -365,16 +365,19 @@ window.showLoader = function () {
 };
 
 window.hideLoader = function () {
-  // Fade out loader
-  $('#global-loader').fadeOut(500, 'swing');
-
-  // Start content fade in shortly after for overlapping effect
+  // Stop animation and fade out loader after delay
   setTimeout(() => {
     if (typeof loaderAnimation?.stop === 'function') {
       loaderAnimation.stop();
     }
-    $('.primary-content').fadeIn(600, 'swing');
-  }, 200);
+
+    $('#global-loader').fadeOut(500, 'swing');
+    
+    // Then fade content back in slightly after loader fades
+    setTimeout(() => {
+      $('.primary-content').fadeIn(600, 'swing');
+    }, 200); // overlaps just a little for smoothness
+  }, 1000); // 
 };
 
 
