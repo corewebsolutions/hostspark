@@ -49,7 +49,7 @@ function initApp() {
       renderer: 'svg',
       loop: true,
       autoplay: false,
-      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871c893e2e877525709732f_lottieflow-loading-07-eb6534-easey.json' 
+      path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871e467907dcf5126902a2f_lottieflow-loading-08-eb6534-easey.json' 
     });
       // Speed up the animation
       loaderAnimation.setSpeed(4);
