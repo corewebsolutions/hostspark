@@ -354,10 +354,10 @@ function dropDownNavigation() {
 
 window.showLoader = function () {
 
-  $('.primary-content').fadeOut(500, 'swing');
+  $('.primary-content').fadeOut(250, 'swing');
   
   setTimeout(() => {
-    $('#global-loader').fadeIn(600, 'swing');
+    $('#global-loader').fadeIn(500, 'swing');
     if (typeof loaderAnimation?.play === 'function') {
       loaderAnimation.play();
     }
