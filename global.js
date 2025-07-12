@@ -51,6 +51,8 @@ function initApp() {
       autoplay: false,
       path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871c893e2e877525709732f_lottieflow-loading-07-eb6534-easey.json' 
     });
+      // Speed up the animation
+      loaderAnimation.setSpeed(1.5);
   }
 
   authMe();
@@ -352,21 +354,26 @@ function dropDownNavigation() {
 
 // Global Loader Control
 window.showLoader = function () {
+  // Fade out the primary content (reveals loader behind)
+  const $content = $('.primary-content');
+  $content.addClass('fade-out');
+
+  // Slight delay to let fade-out complete before playing loader
   setTimeout(() => {
-    $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
-    if (loaderAnimation) loaderAnimation.play();
-  }, 200); // Delay before showing loader
+    if (typeof loaderAnimation?.play === 'function') {
+      loaderAnimation.play();
+    }
+  }, 400); // Match CSS transition time
 };
 
 window.hideLoader = function () {
-  // Start the fade-out immediately
-  $('#global-loader').removeClass('loader-visible');
-  if (loaderAnimation) loaderAnimation.stop();
+  // Stop the loader animation
+  if (typeof loaderAnimation?.stop === 'function') {
+    loaderAnimation.stop();
+  }
 
-  // Wait for CSS transition to finish, then fully hide it
-  setTimeout(() => {
-    $('#global-loader').addClass('loader-hidden');
-  }, 300); // Match your CSS `transition: opacity 300ms ease`
+  // Fade the content back in
+  $('.primary-content').removeClass('fade-out');
 };
 
 function userLocalStorageSettings(response) {
