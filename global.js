@@ -352,21 +352,13 @@ function dropDownNavigation() {
 
 // Global Loader Control
 window.showLoader = function () {
-  // Fade out the app content first
-  $('.primary-content').fadeOut(200, function () {
-    // Then show the loader
-    $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
-    if (loaderAnimation) loaderAnimation.play();
-  });
+  $('#global-loader').removeClass('loader-hidden').addClass('loader-visible');
+  if (loaderAnimation) loaderAnimation.play();
 };
 
 window.hideLoader = function () {
-  // Hide the loader first
   $('#global-loader').removeClass('loader-visible').addClass('loader-hidden');
   if (loaderAnimation) loaderAnimation.stop();
-
-  // Then fade the app back in
-  $('.primary-content').fadeIn(300);
 };
 
 function userLocalStorageSettings(response) {
