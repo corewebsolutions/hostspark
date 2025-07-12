@@ -452,10 +452,10 @@ function authMe() {
 
         if (response.group_id === "0") {
           $('.starter-upgrade-block').css('display','flex');
-          $('.plan-counter').remove();
+          $('.plan-counter').hide();
 
         } else {
-          $('.starter-upgrade-block').remove();
+          $('.starter-upgrade-block').hide();
           $('.plan-counter').css('display','flex');
         }
 
