@@ -220,7 +220,7 @@ function urlRouting() {
  
 // Load Current Page
 function loadCurrentPage() {
-  
+
   let currentPage = localStorage.getItem("pageId") || "dashboard"; // fallback to 'dashboard'
 
   setTimeout(() => {
@@ -419,13 +419,6 @@ function loadUserAvatarSettings() {
     const initials =
       (firstName.charAt(0) || '') + (lastName.charAt(0) || '');
     $avatarFallback.text(initials.toUpperCase()).css('display', 'flex');
-  }
-
-  // show upgrade pro tools block - bottom left
-  if (localStorage.getItem('planId') == 'e15f9227-0254-4b70-8401-ba31cd9cd911') {
-    $('.starter-upgrade-block').show();
-  } else {
-    $('.starter-upgrade-block').remove();
   }
   
 }
