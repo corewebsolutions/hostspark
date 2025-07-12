@@ -357,7 +357,7 @@ window.showLoader = function () {
   $('.primary-content').stop(true, true).animate(
     { opacity: 0 },
     {
-      duration: 600,
+      duration: 100,
       easing: 'swing', // default jQuery easing; looks nice
       complete: function () {
         $('.primary-content').css('display', 'none'); // hide fully
@@ -366,7 +366,7 @@ window.showLoader = function () {
         $('#global-loader').css({ display: 'flex', opacity: 0 }).animate(
           { opacity: 1 },
           {
-            duration: 600,
+            duration: 100,
             easing: 'swing',
             complete: function () {
               if (typeof loaderAnimation?.play === 'function') {
@@ -390,7 +390,7 @@ window.hideLoader = function () {
     $('#global-loader').stop(true, true).animate(
       { opacity: 0 },
       {
-        duration: 600,
+        duration: 800,
         easing: 'swing',
         complete: function () {
           $('#global-loader').css('display', 'none');
@@ -399,14 +399,14 @@ window.hideLoader = function () {
           $('.primary-content').css({ display: 'block', opacity: 0 }).animate(
             { opacity: 1 },
             {
-              duration: 600,
+              duration: 800,
               easing: 'swing'
             }
           );
         }
       }
     );
-  }, 1200); // delay to show loader animation longer
+  }, 1000); // delay to show loader animation longer
 };
 
 
