@@ -52,7 +52,7 @@ function initApp() {
       path: 'https://cdn.prod.website-files.com/685d6bd609529912897b9e0d/6871c893e2e877525709732f_lottieflow-loading-07-eb6534-easey.json' 
     });
       // Speed up the animation
-      loaderAnimation.setSpeed(1.5);
+      loaderAnimation.setSpeed(2.5);
   }
 
   authMe();
@@ -365,19 +365,23 @@ window.showLoader = function () {
 };
 
 window.hideLoader = function () {
-  // Stop animation and fade out loader after delay
+  // Delay before starting to fade out loader (adjust this as needed)
   setTimeout(() => {
-    if (typeof loaderAnimation?.stop === 'function') {
-      loaderAnimation.stop();
-    }
-
+    // Start fading out the loader
     $('#global-loader').fadeOut(500, 'swing');
-    
-    // Then fade content back in slightly after loader fades
+
+    // Slight overlap: begin fading content in shortly after
     setTimeout(() => {
       $('.primary-content').fadeIn(600, 'swing');
-    }, 200); // overlaps just a little for smoothness
-  }, 1000); // 
+    }, 200); // Content fades in while loader is still fading out
+
+    // Stop Lottie after full loader fade-out
+    setTimeout(() => {
+      if (typeof loaderAnimation?.stop === 'function') {
+        loaderAnimation.stop();
+      }
+    }, 550); // Just after fadeOut completes (500ms)
+  }, 500); // ← initial delay before hiding loader starts
 };
 
 
