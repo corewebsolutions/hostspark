@@ -352,30 +352,61 @@ function dropDownNavigation() {
 
 }
 
-// Global Loader Control
 window.showLoader = function () {
-  // Fade out the content
-  $('.primary-content').fadeOut(300, function () {
-    // After fade-out completes, show and play the loader
-    $('.loader-visible').fadeIn(300);
-    if (typeof loaderAnimation?.play === 'function') {
-      loaderAnimation.play();
+  // Fade out the content over 600ms
+  $('.primary-content').stop(true, true).animate(
+    { opacity: 0 },
+    {
+      duration: 600,
+      easing: 'swing', // default jQuery easing; looks nice
+      complete: function () {
+        $('.primary-content').css('display', 'none'); // hide fully
+
+        // Show the loader and play animation
+        $('#global-loader').css({ display: 'flex', opacity: 0 }).animate(
+          { opacity: 1 },
+          {
+            duration: 600,
+            easing: 'swing',
+            complete: function () {
+              if (typeof loaderAnimation?.play === 'function') {
+                loaderAnimation.play();
+              }
+            }
+          }
+        );
+      }
     }
-  });
+  );
 };
 
 window.hideLoader = function () {
-  // Stop the loader after delay
   setTimeout(() => {
     if (typeof loaderAnimation?.stop === 'function') {
       loaderAnimation.stop();
     }
 
-    // Fade out loader, fade content back in
-    $('.loader-visible').fadeOut(300, function () {
-      $('.primary-content').fadeIn(300);
-    });
-  }, 2000); // adjust this delay if needed
+    // Fade out loader
+    $('#global-loader').stop(true, true).animate(
+      { opacity: 0 },
+      {
+        duration: 600,
+        easing: 'swing',
+        complete: function () {
+          $('#global-loader').css('display', 'none');
+
+          // Fade content back in
+          $('.primary-content').css({ display: 'block', opacity: 0 }).animate(
+            { opacity: 1 },
+            {
+              duration: 600,
+              easing: 'swing'
+            }
+          );
+        }
+      }
+    );
+  }, 1200); // delay to show loader animation longer
 };
 
 
