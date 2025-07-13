@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-
     
     const $form = $('#signup-form'); // Add this line to define $form
 

@@ -49,6 +49,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-
 });
